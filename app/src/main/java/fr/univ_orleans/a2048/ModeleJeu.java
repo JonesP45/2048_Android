@@ -304,8 +304,18 @@ public class ModeleJeu {
 
     }
 
+    private boolean verifGameOver(){
+        for(int i = 1;  i<taille; i++){
+            for(int j = 1; j<taille; j++){
+                if(grille[i-1][j] == grille[i][j] || grille[i][j-1]==grille[i][j])
+                    return false;
+            }
+        }
+        return true;
+    }
+
     public boolean isGameOver() {
-        return liste.isEmpty() && !(moveHaut() && moveBas() && moveGauche() && moveDroite());
+        return liste.isEmpty() && verifGameOver();
     }
 
     public void jeu() {
