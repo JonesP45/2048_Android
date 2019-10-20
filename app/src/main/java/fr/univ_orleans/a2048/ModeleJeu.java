@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class ModeleJeu {
 
-    public enum Mouvement{
+    public enum Mouvement {
         DROITE, GAUCHE, HAUT, BAS
     }
 
@@ -29,45 +29,58 @@ public class ModeleJeu {
         generationAleatoire(2);
     }
 
-    public void move(Mouvement horizontal, Mouvement vertical){
-        int valeurcourante =- 1;
-        int indice;
-        if(vertical == Mouvement.HAUT){
-            indice = 0;
-            for (int i = 0; i < taille; i++) {
-                for (int j = 0; j < taille; j++) {
+    public void move(Mouvement horizontal, Mouvement vertical) {
 
-                }
-            }
-        }else if(vertical == Mouvement.BAS){
-            indice = taille -1;
-            for(int i = taille - 1; i >= 0; i--){
-                for(int j = 0; j < taille; j++){
+//        int valeurIitiale = -1, valeurCourante = valeurIitiale;
+//        int indice;
 
-                }
-            }
-        }else if(horizontal == Mouvement.DROITE){
-            indice = taille -1;
-            for (int i = 0; i < taille; i++) {
-                for (int j = taille - 1; j >= 0; j--) {
+//        if (vertical == Mouvement.HAUT) {
+//            indice = 0;
+//            for (int i = 0; i < taille; i++) {
+//                for (int j = 0; j < taille; j++) {
+//
+//                }
+//            }
+//        } else if (vertical == Mouvement.BAS) {
+//            indice = taille - 1;
+//            for(int i = taille - 1; i >= 0; i--){
+//                for(int j = 0; j < taille; j++){
+//
+//                }
+//            }
+//        } else if (horizontal == Mouvement.DROITE) {
+//            indice = taille - 1;
+//            for (int i = 0; i < taille; i++) {
+//                for (int j = taille - 1; j >= 0; j--) {
+//
+//                }
+//            }
+//        } else if (horizontal == Mouvement.GAUCHE) {
+//            indice = 0;
+//            for (int i = 0; i < taille; i++) {
+//                for (int j = 0; j < taille; j++) {
+//
+//                }
+//            }
+//        }
 
-                }
-            }
-        }else if(horizontal == Mouvement.GAUCHE){
-            indice = 0;
-            for (int i = 0; i < taille; i++) {
-                for (int j = 0; j < taille; j++) {
-
-                }
-            }
+        if (vertical == Mouvement.HAUT) {
+            moveHaut();
+        } else if (vertical == Mouvement.BAS) {
+            moveBas();
+        } else if (horizontal == Mouvement.DROITE) {
+            moveDroite();
+        } else if (horizontal == Mouvement.GAUCHE) {
+            moveGauche();
         }
     }
 
-    private void mouvement(int indiceH,int indiceV,int indice,int valeurcourante){
-
+    private void mouvement(int indiceH, int indiceV, int indice, int valeurCourante) {
+        boolean movement = false;
+        // pour moi ça va pas
     }
 
-    public boolean moveDroite() {
+    private boolean moveDroite() {
         boolean movement = false;
         int valeurIitiale = -1, valeurCourante = valeurIitiale;
         int indice = taille - 1;
@@ -105,16 +118,118 @@ public class ModeleJeu {
         return movement;
     }
 
-    public boolean moveGauche() {
-        return false;
+    private boolean moveGauche() {
+        boolean movement = false;
+        int valeurIitiale = -1, valeurCourante = valeurIitiale;
+        int indice = 0; //modif
+        for (int i = 0; i < taille; i++) {
+            for (int j = 0; j < taille - 1; j++) { //modif
+                int caze = grille[i][j];
+                if (caze > 0) {
+                    if (!movement)
+                        movement = true;
+                    if (valeurCourante == caze) {
+                        valeurCourante += caze;
+                        score += valeurCourante;
+                        grille[i][indice] = valeurCourante; //pb avec haut/bas
+                        ajouterCaseVide(i, j);
+                        valeurCourante = valeurIitiale;
+                        indice++;
+                    } //bon
+                    else if (valeurCourante == -1) { //valeurCourante != caze
+                        valeurCourante = caze;
+                        supprimerCaseVide(i, indice);
+                        ajouterCaseVide(i, j);
+                    }
+                    else { //valeurCourante != caze && valeurCourante != -1
+                        indice++;
+                        valeurCourante = caze;
+                        grille[i][indice] = caze;
+                        ajouterCaseVide(i, j);
+                        supprimerCaseVide(i, indice);
+                    }
+                }
+            }
+            valeurCourante = valeurIitiale;
+            indice = 0; //modif
+        }
+        return movement;
     }
 
-    public boolean moveHaut() {
-        return false;
+    private boolean moveHaut() {
+        boolean movement = false;
+        int valeurIitiale = -1, valeurCourante = valeurIitiale;
+        int indice = 0; //modif
+        for (int i = 0; i < taille; i++) {
+            for (int j = 0; j < taille - 1; j++) { //modif
+                int caze = grille[i][j];
+                if (caze > 0) {
+                    if (!movement)
+                        movement = true;
+                    if (valeurCourante == caze) {
+                        valeurCourante += caze;
+                        score += valeurCourante;
+                        grille[indice][j] = valeurCourante; //pb avec haut/bas
+                        ajouterCaseVide(i, j);
+                        valeurCourante = valeurIitiale;
+                        indice++;
+                    } //bon
+                    else if (valeurCourante == -1) { //valeurCourante != caze
+                        valeurCourante = caze;
+                        supprimerCaseVide(indice, j);
+                        ajouterCaseVide(i, j);
+                    }
+                    else { //valeurCourante != caze && valeurCourante != -1
+                        indice++;
+                        valeurCourante = caze;
+                        grille[indice][j] = caze;
+                        ajouterCaseVide(i, j);
+                        supprimerCaseVide(indice, j);
+                    }
+                }
+            }
+            valeurCourante = valeurIitiale;
+            indice = 0; //modif
+        }
+        return movement;
     }
 
-    public boolean moveBas() {
-        return false;
+    private boolean moveBas() {
+        boolean movement = false;
+        int valeurIitiale = -1, valeurCourante = valeurIitiale;
+        int indice = taille - 1; //modif
+        for (int i = 0; i < taille; i++) {
+            for (int j = taille - 1; j >= 0; j--) { //modif
+                int caze = grille[i][j];
+                if (caze > 0) {
+                    if (!movement)
+                        movement = true;
+                    if (valeurCourante == caze) {
+                        valeurCourante += caze;
+                        score += valeurCourante;
+                        grille[indice][j] = valeurCourante; //pb avec haut/bas
+                        ajouterCaseVide(i, j);
+                        valeurCourante = valeurIitiale;
+                        indice--;
+                    } //bon
+                    else if (valeurCourante == -1) { //valeurCourante != caze
+                        valeurCourante = caze;
+                        supprimerCaseVide(indice, j);
+                        ajouterCaseVide(i, j);
+                    }
+                    else { //valeurCourante != caze && valeurCourante != -1
+                        indice--;
+                        valeurCourante = caze;
+                        grille[indice][j] = caze;
+                        ajouterCaseVide(i, j);
+                        supprimerCaseVide(indice, j);
+                    }
+                }
+            }
+            valeurCourante = valeurIitiale;
+            indice = 0; //modif
+        }
+        return movement;
     }
 
     public void modifScore() {
