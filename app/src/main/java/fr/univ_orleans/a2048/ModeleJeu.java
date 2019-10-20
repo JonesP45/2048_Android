@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class ModeleJeu {
 
     public enum Mouvement{
-        DROITE,GAUCHE,HAUT,BAS
+        DROITE, GAUCHE, HAUT, BAS
     }
 
     private int taille;
@@ -30,7 +30,7 @@ public class ModeleJeu {
     }
 
     public void move(Mouvement horizontal, Mouvement vertical){
-        int valeurcourante=-1;
+        int valeurcourante =- 1;
         int indice;
         if(vertical == Mouvement.HAUT){
             indice = 0;
@@ -41,8 +41,8 @@ public class ModeleJeu {
             }
         }else if(vertical == Mouvement.BAS){
             indice = taille -1;
-            for(int i =taille -1; i>=0; i--){
-                for(int j=0; j<taille; j++){
+            for(int i = taille - 1; i >= 0; i--){
+                for(int j = 0; j < taille; j++){
 
                 }
             }
@@ -56,7 +56,7 @@ public class ModeleJeu {
         }else if(horizontal == Mouvement.GAUCHE){
             indice = 0;
             for (int i = 0; i < taille; i++) {
-                for (int j = 0; j <taille; j++) {
+                for (int j = 0; j < taille; j++) {
 
                 }
             }
@@ -67,54 +67,62 @@ public class ModeleJeu {
 
     }
 
-    public void moveDroite() {
-        int valeurCourante = -1;
+    public boolean moveDroite() {
+        boolean movement = false;
+        int valeurIitiale = -1, valeurCourante = valeurIitiale;
         int indice = taille - 1;
         for (int i = 0; i < taille; i++) {
             for (int j = taille - 1; j >= 0; j--) {
                 int caze = grille[i][j];
-                if (valeurCourante == -1) {
-//                    valeurCourante = caze;
-//                    indice--;
+                if (caze > 0) {
+                    if (!movement)
+                        movement = true;
+                    if (valeurCourante == caze) {
+                        valeurCourante += caze;
+                        score += valeurCourante;
+                        grille[i][indice] = valeurCourante;
+                        ajouterCaseVide(i, j);
+                        valeurCourante = valeurIitiale;
+                        indice--;
+                    } //bon
+                    else if (valeurCourante == -1) { //valeurCourante != caze
+                        valeurCourante = caze;
+                        supprimerCaseVide(i, indice);
+                        ajouterCaseVide(i, j);
+                    }
+                    else { //valeurCourante != caze && valeurCourante != -1
+                        indice--;
+                        valeurCourante = caze;
+                        grille[i][indice] = caze;
+                        ajouterCaseVide(i, j);
+                        supprimerCaseVide(i, indice);
+                    }
                 }
-                else if (caze == valeurCourante) {
-                    score += valeurCourante;
-                    grille[i][indice] = 2 * caze;
-                    ajouterCaseVide(i, j);
-                    valeurCourante = 0;
-                    indice--;
-                }
-                else if (caze != valeurCourante) {
-                    valeurCourante = caze;
-                    grille[i][indice] = valeurCourante;
-                    supprimerCaseVide(i,indice);
-                    ajouterCaseVide(i, j);
-                }
-//                else if (caze != valeurCourante && )
             }
-            valeurCourante = -1;
-            indice = taille;
+            valeurCourante = valeurIitiale;
+            indice = taille - 1;
         }
+        return movement;
     }
 
-    public void moveGauche() {
-
+    public boolean moveGauche() {
+        return false;
     }
 
-    public void moveHaut() {
-
+    public boolean moveHaut() {
+        return false;
     }
 
-    public void moveBas() {
-
+    public boolean moveBas() {
+        return false;
     }
 
     public void modifScore() {
 
     }
 
-    public boolean verifFinJeu() {
-        return false;
+    public boolean isGameOver() {
+        return liste.isEmpty() && !(moveHaut() && moveBas() && moveGauche() && moveDroite());
     }
 
     public void jeu() {
