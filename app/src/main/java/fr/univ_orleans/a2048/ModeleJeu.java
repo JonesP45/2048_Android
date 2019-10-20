@@ -29,55 +29,123 @@ public class ModeleJeu {
         generationAleatoire(2);
     }
 
-    public void move(Mouvement horizontal, Mouvement vertical) {
-
-//        int valeurIitiale = -1, valeurCourante = valeurIitiale;
-//        int indice;
-
-//        if (vertical == Mouvement.HAUT) {
-//            indice = 0;
-//            for (int i = 0; i < taille; i++) {
-//                for (int j = 0; j < taille; j++) {
-//
-//                }
-//            }
-//        } else if (vertical == Mouvement.BAS) {
-//            indice = taille - 1;
-//            for(int i = taille - 1; i >= 0; i--){
-//                for(int j = 0; j < taille; j++){
-//
-//                }
-//            }
-//        } else if (horizontal == Mouvement.DROITE) {
-//            indice = taille - 1;
-//            for (int i = 0; i < taille; i++) {
-//                for (int j = taille - 1; j >= 0; j--) {
-//
-//                }
-//            }
-//        } else if (horizontal == Mouvement.GAUCHE) {
-//            indice = 0;
-//            for (int i = 0; i < taille; i++) {
-//                for (int j = 0; j < taille; j++) {
-//
-//                }
-//            }
-//        }
-
-        if (vertical == Mouvement.HAUT) {
-            moveHaut();
-        } else if (vertical == Mouvement.BAS) {
-            moveBas();
-        } else if (horizontal == Mouvement.DROITE) {
-            moveDroite();
-        } else if (horizontal == Mouvement.GAUCHE) {
-            moveGauche();
+    public void move(Mouvement horizontal, Mouvement vertical){
+        int valeurCourante;
+        int indice;
+        Pair<Integer,Integer> indiceEtvaleurCourante;
+        if(vertical == Mouvement.HAUT){
+            for (int i = 0; i < taille; i++) {
+                indice = 0;
+                valeurCourante=-1;
+                for (int j = 0; j < taille; j++) {
+                    indiceEtvaleurCourante = mouvement(i,j,indice,i,valeurCourante,Mouvement.HAUT);
+                    indice = indiceEtvaleurCourante.first;
+                    valeurCourante = indiceEtvaleurCourante.second;
+                }
+            }
+        }else if(vertical == Mouvement.BAS){
+            for(int i =taille -1; i>=0; i--){
+                indice = taille -1;
+                valeurCourante =-1;
+                for(int j=0; j<taille; j++){
+                    indiceEtvaleurCourante = mouvement(i,j,indice,i,valeurCourante,Mouvement.BAS);
+                    indice = indiceEtvaleurCourante.first;
+                    valeurCourante = indiceEtvaleurCourante.second;
+                }
+            }
+        }else if(horizontal == Mouvement.DROITE){
+            for (int i = 0; i < taille; i++) {
+                indice = taille -1;
+                valeurCourante = -1;
+                for (int j = taille - 1; j >= 0; j--) {
+                    indiceEtvaleurCourante = mouvement(i,j,j,indice,valeurCourante,Mouvement.DROITE);
+                    indice = indiceEtvaleurCourante.first;
+                    valeurCourante = indiceEtvaleurCourante.second;
+                }
+            }
+        }else if(horizontal == Mouvement.GAUCHE){
+            for (int i = 0; i < taille; i++) {
+                indice = 0;
+                valeurCourante = -1;
+                for (int j = 0; j <taille; j++) {
+                    indiceEtvaleurCourante = mouvement(i,j,j,indice,valeurCourante,Mouvement.GAUCHE);
+                    indice = indiceEtvaleurCourante.first;
+                    valeurCourante = indiceEtvaleurCourante.second;
+                }
+            }
         }
+
+/*
+        if(horizontal == Mouvement.DROITE)
+            moveDroite();
+        if(horizontal == Mouvement.GAUCHE)
+            moveGauche();
+        if(vertical == Mouvement.HAUT)
+            moveHaut();
+        if(vertical == Mouvement.BAS)
+            moveBas();
+*/
     }
 
-    private void mouvement(int indiceH, int indiceV, int indice, int valeurCourante) {
-        boolean movement = false;
-        // pour moi ça va pas
+    private Pair<Integer,Integer> mouvement(int i,int j,int indiceH, int indiceV,int valeurCourante, Mouvement mouv){
+        int cellule = grille[i][j];
+        if (cellule > 0) {
+            if (valeurCourante == cellule) {
+                valeurCourante += cellule;
+                score += valeurCourante;
+                grille[indiceV][indiceH] = valeurCourante;
+                ajouterCaseVide(i, j);
+                valeurCourante = -1;
+                if(mouv == Mouvement.DROITE)
+                    return new Pair<>(indiceH-1,valeurCourante);
+                if(mouv == Mouvement.GAUCHE)
+                    return new Pair<>(indiceH+1,valeurCourante);
+                if(mouv == Mouvement.BAS)
+                    return new Pair<>(indiceV-1,valeurCourante);
+
+                return new Pair<>(indiceH+1,valeurCourante);
+
+            } //bon
+            else if (valeurCourante == -1) { //valeurCourante != cellule
+                valeurCourante = cellule;
+                supprimerCaseVide(indiceV, indiceH);
+                ajouterCaseVide(i, j);
+                return new Pair<>(indiceH,cellule);
+            }
+            else { //valeurCourante != cellule && valeurCourante != -1
+                if(mouv == Mouvement.DROITE)
+                    indiceH--;
+                if(mouv == Mouvement.GAUCHE)
+                    indiceH++;
+                if(mouv == Mouvement.BAS)
+                    indiceV--;
+                if(mouv == Mouvement.HAUT)
+                    indiceV++;
+                valeurCourante = cellule;
+                grille[indiceV][indiceH] = cellule;
+                ajouterCaseVide(i, j);
+                supprimerCaseVide(indiceV, indiceH);
+                if(mouv == Mouvement.DROITE)
+                    return new Pair<>(indiceH,valeurCourante);
+                if(mouv == Mouvement.GAUCHE)
+                    return new Pair<>(indiceH,valeurCourante);
+                if(mouv == Mouvement.BAS)
+                    return new Pair<>(indiceV,valeurCourante);
+
+                return new Pair<>(indiceV,valeurCourante);
+            }
+        }
+        if(mouv == Mouvement.DROITE)
+            return new Pair<>(indiceH,valeurCourante);
+        if(mouv == Mouvement.GAUCHE)
+            return new Pair<>(indiceH,valeurCourante);
+        if(mouv == Mouvement.BAS)
+            return new Pair<>(indiceV,valeurCourante);
+        
+        return new Pair<>(indiceV,valeurCourante);
+
+
+
     }
 
     private boolean moveDroite() {
@@ -86,27 +154,27 @@ public class ModeleJeu {
         int indice = taille - 1;
         for (int i = 0; i < taille; i++) {
             for (int j = taille - 1; j >= 0; j--) {
-                int caze = grille[i][j];
-                if (caze > 0) {
+                int cellule = grille[i][j];
+                if (cellule > 0) {
                     if (!movement)
                         movement = true;
-                    if (valeurCourante == caze) {
-                        valeurCourante += caze;
+                    if (valeurCourante == cellule) {
+                        valeurCourante += cellule;
                         score += valeurCourante;
                         grille[i][indice] = valeurCourante;
                         ajouterCaseVide(i, j);
                         valeurCourante = valeurIitiale;
                         indice--;
                     } //bon
-                    else if (valeurCourante == -1) { //valeurCourante != caze
-                        valeurCourante = caze;
+                    else if (valeurCourante == -1) { //valeurCourante != cellule
+                        valeurCourante = cellule;
                         supprimerCaseVide(i, indice);
                         ajouterCaseVide(i, j);
                     }
-                    else { //valeurCourante != caze && valeurCourante != -1
+                    else { //valeurCourante != cellule && valeurCourante != -1
                         indice--;
-                        valeurCourante = caze;
-                        grille[i][indice] = caze;
+                        valeurCourante = cellule;
+                        grille[i][indice] = cellule;
                         ajouterCaseVide(i, j);
                         supprimerCaseVide(i, indice);
                     }
@@ -124,27 +192,27 @@ public class ModeleJeu {
         int indice = 0; //modif
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille - 1; j++) { //modif
-                int caze = grille[i][j];
-                if (caze > 0) {
+                int cellule = grille[i][j];
+                if (cellule > 0) {
                     if (!movement)
                         movement = true;
-                    if (valeurCourante == caze) {
-                        valeurCourante += caze;
+                    if (valeurCourante == cellule) {
+                        valeurCourante += cellule;
                         score += valeurCourante;
                         grille[i][indice] = valeurCourante; //pb avec haut/bas
                         ajouterCaseVide(i, j);
                         valeurCourante = valeurIitiale;
                         indice++;
                     } //bon
-                    else if (valeurCourante == -1) { //valeurCourante != caze
-                        valeurCourante = caze;
+                    else if (valeurCourante == -1) { //valeurCourante != cellule
+                        valeurCourante = cellule;
                         supprimerCaseVide(i, indice);
                         ajouterCaseVide(i, j);
                     }
-                    else { //valeurCourante != caze && valeurCourante != -1
+                    else { //valeurCourante != cellule && valeurCourante != -1
                         indice++;
-                        valeurCourante = caze;
-                        grille[i][indice] = caze;
+                        valeurCourante = cellule;
+                        grille[i][indice] = cellule;
                         ajouterCaseVide(i, j);
                         supprimerCaseVide(i, indice);
                     }
@@ -162,27 +230,27 @@ public class ModeleJeu {
         int indice = 0; //modif
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille - 1; j++) { //modif
-                int caze = grille[i][j];
-                if (caze > 0) {
+                int cellule = grille[i][j];
+                if (cellule > 0) {
                     if (!movement)
                         movement = true;
-                    if (valeurCourante == caze) {
-                        valeurCourante += caze;
+                    if (valeurCourante == cellule) {
+                        valeurCourante += cellule;
                         score += valeurCourante;
                         grille[indice][j] = valeurCourante; //pb avec haut/bas
                         ajouterCaseVide(i, j);
                         valeurCourante = valeurIitiale;
                         indice++;
                     } //bon
-                    else if (valeurCourante == -1) { //valeurCourante != caze
-                        valeurCourante = caze;
+                    else if (valeurCourante == -1) { //valeurCourante != cellule
+                        valeurCourante = cellule;
                         supprimerCaseVide(indice, j);
                         ajouterCaseVide(i, j);
                     }
-                    else { //valeurCourante != caze && valeurCourante != -1
+                    else { //valeurCourante != cellule && valeurCourante != -1
                         indice++;
-                        valeurCourante = caze;
-                        grille[indice][j] = caze;
+                        valeurCourante = cellule;
+                        grille[indice][j] = cellule;
                         ajouterCaseVide(i, j);
                         supprimerCaseVide(indice, j);
                     }
@@ -200,27 +268,27 @@ public class ModeleJeu {
         int indice = taille - 1; //modif
         for (int i = 0; i < taille; i++) {
             for (int j = taille - 1; j >= 0; j--) { //modif
-                int caze = grille[i][j];
-                if (caze > 0) {
+                int cellule = grille[i][j];
+                if (cellule > 0) {
                     if (!movement)
                         movement = true;
-                    if (valeurCourante == caze) {
-                        valeurCourante += caze;
+                    if (valeurCourante == cellule) {
+                        valeurCourante += cellule;
                         score += valeurCourante;
                         grille[indice][j] = valeurCourante; //pb avec haut/bas
                         ajouterCaseVide(i, j);
                         valeurCourante = valeurIitiale;
                         indice--;
                     } //bon
-                    else if (valeurCourante == -1) { //valeurCourante != caze
-                        valeurCourante = caze;
+                    else if (valeurCourante == -1) { //valeurCourante != cellule
+                        valeurCourante = cellule;
                         supprimerCaseVide(indice, j);
                         ajouterCaseVide(i, j);
                     }
-                    else { //valeurCourante != caze && valeurCourante != -1
+                    else { //valeurCourante != cellule && valeurCourante != -1
                         indice--;
-                        valeurCourante = caze;
-                        grille[indice][j] = caze;
+                        valeurCourante = cellule;
+                        grille[indice][j] = cellule;
                         ajouterCaseVide(i, j);
                         supprimerCaseVide(indice, j);
                     }
