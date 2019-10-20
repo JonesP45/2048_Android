@@ -6,6 +6,10 @@ import java.util.ArrayList;
 
 public class ModeleJeu {
 
+    public enum Mouvement{
+        DROITE,GAUCHE,HAUT,BAS
+    }
+
     private int taille;
     private int[][] grille;
     private int score;
@@ -23,6 +27,44 @@ public class ModeleJeu {
         }
         generationAleatoire(2); //deux chiffres 2 généré aléatoirement au début
         generationAleatoire(2);
+    }
+
+    public void move(Mouvement horizontal, Mouvement vertical){
+        int valeurcourante=-1;
+        int indice;
+        if(vertical == Mouvement.HAUT){
+            indice = 0;
+            for (int i = 0; i < taille; i++) {
+                for (int j = 0; j < taille; j++) {
+
+                }
+            }
+        }else if(vertical == Mouvement.BAS){
+            indice = taille -1;
+            for(int i =taille -1; i>=0; i--){
+                for(int j=0; j<taille; j++){
+
+                }
+            }
+        }else if(horizontal == Mouvement.DROITE){
+            indice = taille -1;
+            for (int i = 0; i < taille; i++) {
+                for (int j = taille - 1; j >= 0; j--) {
+
+                }
+            }
+        }else if(horizontal == Mouvement.GAUCHE){
+            indice = 0;
+            for (int i = 0; i < taille; i++) {
+                for (int j = 0; j <taille; j++) {
+
+                }
+            }
+        }
+    }
+
+    private void mouvement(int indiceH,int indiceV,int indice,int valeurcourante){
+
     }
 
     public void moveDroite() {
