@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         return gestureDetector.onTouchEvent(event);
     }
 
+    //pour l'instant permet juste de savoir par ou on swipe
     public void onSwipe(SwipeGestureDetector.SwipeDirection direction) {
         String message = "";
         switch (direction) {
