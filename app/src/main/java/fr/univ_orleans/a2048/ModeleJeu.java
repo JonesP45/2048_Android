@@ -14,6 +14,7 @@ public class ModeleJeu {
     private int[][] grille;
     private int score;
     private ArrayList<Pair<Integer, Integer>> liste;
+    private boolean grillemodifiee = false;
 
     public ModeleJeu() {
         taille = 4;
@@ -32,6 +33,7 @@ public class ModeleJeu {
     public void move(Mouvement horizontal, Mouvement vertical){
         int valeurCourante;
         int indice;
+        grillemodifiee = false;
         Pair<Integer,Integer> indiceEtvaleurCourante;
         if(vertical == Mouvement.HAUT){
             for (int i = 0; i < taille; i++) {
@@ -75,6 +77,8 @@ public class ModeleJeu {
             }
         }
 
+        if(grillemodifiee) generationAleatoire(0);
+
 /*
         if(horizontal == Mouvement.DROITE)
             moveDroite();
@@ -96,6 +100,7 @@ public class ModeleJeu {
                 grille[indiceV][indiceH] = valeurCourante;
                 ajouterCaseVide(i, j);
                 valeurCourante = -1;
+                grillemodifiee = true;
                 if(mouv == Mouvement.DROITE)
                     return new Pair<>(indiceH-1,valeurCourante);
                 if(mouv == Mouvement.GAUCHE)
@@ -110,6 +115,7 @@ public class ModeleJeu {
                 valeurCourante = cellule;
                 supprimerCaseVide(indiceV, indiceH);
                 ajouterCaseVide(i, j);
+                grillemodifiee = true;
                 return new Pair<>(indiceH,cellule);
             }
             else { //valeurCourante != cellule && valeurCourante != -1
@@ -125,6 +131,7 @@ public class ModeleJeu {
                 grille[indiceV][indiceH] = cellule;
                 ajouterCaseVide(i, j);
                 supprimerCaseVide(indiceV, indiceH);
+                grillemodifiee = true;
                 if(mouv == Mouvement.DROITE)
                     return new Pair<>(indiceH,valeurCourante);
                 if(mouv == Mouvement.GAUCHE)
@@ -302,6 +309,10 @@ public class ModeleJeu {
 
     public void modifScore() {
 
+    }
+
+    public int getScore(){
+        return score;
     }
 
     private boolean verifGameOver(){
