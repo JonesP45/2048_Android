@@ -23,7 +23,7 @@ public class MenuActivity extends AppCompatActivity  implements MenuFragment.OnB
     // --------------
 
     @Override
-    public void onGameButtonClicked(View view) {
+    public void onNewGameButtonClicked(View view) {
         Log.e(getClass().getSimpleName(),"Button clicked !");
         startActivity(new Intent(this, JeuActivity.class));
     }
