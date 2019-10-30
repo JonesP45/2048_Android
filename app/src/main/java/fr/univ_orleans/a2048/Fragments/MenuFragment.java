@@ -17,7 +17,8 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
     // 1 - Declare our interface that will be implemented by any container activity
     public interface OnButtonClickedListener {
-        public void onButtonClicked(View view);
+        void onGameButtonClicked(View view);
+        void onScoreButtonClicked(View view);
     }
 
     // --------------
@@ -27,10 +28,11 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Inflate the layout of MainFragment
-        View result=inflater.inflate(R.layout.fragment_menu, container, false);
+        View result = inflater.inflate(R.layout.fragment_menu, container, false);
 
         //Set onClickListener to button "SHOW ME DETAILS"
-        result.findViewById(R.id.fragment_menu_jouer).setOnClickListener(this);
+        result.findViewById(R.id.fragment_menu_bouton_jouer).setOnClickListener(this);
+        result.findViewById(R.id.fragment_menu_bouton_score).setOnClickListener(this);
 
         return result;
     }
@@ -50,7 +52,16 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         // 5 - Spread the click to the parent activity
-        mCallback.onButtonClicked(v);
+        switch (v.getId()) {
+            case R.id.fragment_menu_bouton_jouer:
+                mCallback.onGameButtonClicked(v);
+                break;
+            case R.id.fragment_menu_bouton_score:
+                mCallback.onScoreButtonClicked(v);
+                break;
+            default:
+                break;
+        }
     }
 
     // --------------
@@ -71,12 +82,19 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
 //Explications :
 //
-//      1.  Création de l'interface : Nous créons ici une interface dans le but d'obliger toute activité souhaitant communiquer avec ce fragment à implémenter la méthode onButtonClicked(View).
+//      1.  Création de l'interface : Nous créons ici une interface dans le but d'obliger toute
+//      activité souhaitant communiquer avec ce fragment à implémenter la méthode onButtonClicked(View).
 //
-//      2.  Déclaration de notre Callback : En déclarant ce Callback comme variable au sein du fragment, nous allons pouvoir créer un lien direct avec notre activité parente.
+//      2.  Déclaration de notre Callback : En déclarant ce Callback comme variable au sein du
+//      fragment, nous allons pouvoir créer un lien direct avec notre activité parente.
 //
-//      3.  Création du Callback pointant vers notre activité : Nous allons lier notre Callback avec notre activité parente en y souscrivant depuis le fragment enfant. Cependant, il faudra que notre activité parente (donc qui contient ce fragment) implémente l'interface OnButtonClickedListener.
+//      3.  Création du Callback pointant vers notre activité : Nous allons lier notre Callback
+//      avec notre activité parente en y souscrivant depuis le fragment enfant. Cependant, il faudra
+//      que notre activité parente (donc qui contient ce fragment) implémente l'interface OnButtonClickedListener.
 //
-//      4.  Nous appelons ici la méthode de création du callback depuis onAttach(), car c'est à ce moment uniquement que l'on sait avec certitude que notre fragment est bien attaché à son activité parente.
+//      4.  Nous appelons ici la méthode de création du callback depuis onAttach(), car c'est à ce
+//      moment uniquement que l'on sait avec certitude que notre fragment est bien attaché à son
+//      activité parente.
 //
-//      5.  Propagation du clic : Nous allons ici propager le clic de notre utilisateur directement à notre activité parente via la méthode onButtonClicked(View).
+//      5.  Propagation du clic : Nous allons ici propager le clic de notre utilisateur directement
+//      à notre activité parente via la méthode onButtonClicked(View).

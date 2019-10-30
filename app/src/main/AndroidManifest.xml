@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.JeuActivity"></activity>
+        <activity android:name=".Activities.ScoreActivity"></activity>
+        <activity android:name=".Activities.JeuActivity" />
         <activity android:name=".TestActivity" />
-        <activity android:name=".Activities.MainActivity">
+        <activity android:name=".Activities.MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
