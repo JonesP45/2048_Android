@@ -12,9 +12,12 @@ public class ModeleJeu {
 
     private int taille;
     private int[][] grille;
+    private int[][] grilleN_1;
     private int score;
     private ArrayList<Pair<Integer, Integer>> liste;
-    private boolean grillemodifiee = false;
+    private boolean grilleModifiee = false;
+    private boolean premierCoup = false;
+    private boolean undoDejaFait = false;
 
     public ModeleJeu() {
         taille = 4;
@@ -24,6 +27,7 @@ public class ModeleJeu {
         for (int i = 0; i < taille; i++) {
             for (int j = 0; j < taille; j++) {
                 grille[i][j] = 0;
+                grilleN_1[i][j] = 0;
             }
         }
         generationAleatoire(2); //deux chiffres 2 généré aléatoirement au début
@@ -31,36 +35,37 @@ public class ModeleJeu {
     }
 
     public void move(Mouvement horizontal, Mouvement vertical){
+        if (!premierCoup) premierCoup = true;
         int valeurCourante;
         int indice;
-        grillemodifiee = false;
-        Pair<Integer,Integer> indiceEtvaleurCourante;
+        grilleModifiee = false;
+        Pair<Integer, Integer> indiceEtvaleurCourante;
         if(vertical == Mouvement.HAUT){
             for (int i = 0; i < taille; i++) {
                 indice = 0;
-                valeurCourante=-1;
+                valeurCourante =- 1;
                 for (int j = 0; j < taille; j++) {
-                    indiceEtvaleurCourante = mouvement(i,j,indice,i,valeurCourante,Mouvement.HAUT);
+                    indiceEtvaleurCourante = mouvement(i, j, indice, i, valeurCourante, Mouvement.HAUT);
                     indice = indiceEtvaleurCourante.first;
                     valeurCourante = indiceEtvaleurCourante.second;
                 }
             }
         }else if(vertical == Mouvement.BAS){
-            for(int i =taille -1; i>=0; i--){
-                indice = taille -1;
-                valeurCourante =-1;
-                for(int j=0; j<taille; j++){
-                    indiceEtvaleurCourante = mouvement(i,j,indice,i,valeurCourante,Mouvement.BAS);
+            for(int i = taille - 1; i >= 0; i--){
+                indice = taille - 1;
+                valeurCourante =- 1;
+                for(int j = 0; j < taille; j++){
+                    indiceEtvaleurCourante = mouvement(i, j, indice, i, valeurCourante, Mouvement.BAS);
                     indice = indiceEtvaleurCourante.first;
                     valeurCourante = indiceEtvaleurCourante.second;
                 }
             }
         }else if(horizontal == Mouvement.DROITE){
             for (int i = 0; i < taille; i++) {
-                indice = taille -1;
-                valeurCourante = -1;
+                indice = taille - 1;
+                valeurCourante = - 1;
                 for (int j = taille - 1; j >= 0; j--) {
-                    indiceEtvaleurCourante = mouvement(i,j,j,indice,valeurCourante,Mouvement.DROITE);
+                    indiceEtvaleurCourante = mouvement(i, j, j, indice, valeurCourante, Mouvement.DROITE);
                     indice = indiceEtvaleurCourante.first;
                     valeurCourante = indiceEtvaleurCourante.second;
                 }
@@ -68,16 +73,16 @@ public class ModeleJeu {
         }else if(horizontal == Mouvement.GAUCHE){
             for (int i = 0; i < taille; i++) {
                 indice = 0;
-                valeurCourante = -1;
-                for (int j = 0; j <taille; j++) {
-                    indiceEtvaleurCourante = mouvement(i,j,j,indice,valeurCourante,Mouvement.GAUCHE);
+                valeurCourante = - 1;
+                for (int j = 0; j < taille; j++) {
+                    indiceEtvaleurCourante = mouvement(i, j, j, indice, valeurCourante, Mouvement.GAUCHE);
                     indice = indiceEtvaleurCourante.first;
                     valeurCourante = indiceEtvaleurCourante.second;
                 }
             }
         }
 
-        if(grillemodifiee) generationAleatoire(0);
+        if(grilleModifiee) generationAleatoire(0);
 
 /*
         if(horizontal == Mouvement.DROITE)
@@ -94,13 +99,14 @@ public class ModeleJeu {
     private Pair<Integer,Integer> mouvement(int i,int j,int indiceH, int indiceV,int valeurCourante, Mouvement mouv){
         int cellule = grille[i][j];
         if (cellule > 0) {
+            if (undoDejaFait) undoDejaFait = false;
             if (valeurCourante == cellule) {
                 valeurCourante += cellule;
                 score += valeurCourante;
                 grille[indiceV][indiceH] = valeurCourante;
                 ajouterCaseVide(i, j);
                 valeurCourante = -1;
-                grillemodifiee = true;
+                grilleModifiee = true;
                 if(mouv == Mouvement.DROITE)
                     return new Pair<>(indiceH-1,valeurCourante);
                 if(mouv == Mouvement.GAUCHE)
@@ -115,7 +121,7 @@ public class ModeleJeu {
                 valeurCourante = cellule;
                 supprimerCaseVide(indiceV, indiceH);
                 ajouterCaseVide(i, j);
-                grillemodifiee = true;
+                grilleModifiee = true;
                 return new Pair<>(indiceH,cellule);
             }
             else { //valeurCourante != cellule && valeurCourante != -1
@@ -131,14 +137,13 @@ public class ModeleJeu {
                 grille[indiceV][indiceH] = cellule;
                 ajouterCaseVide(i, j);
                 supprimerCaseVide(indiceV, indiceH);
-                grillemodifiee = true;
+                grilleModifiee = true;
                 if(mouv == Mouvement.DROITE)
                     return new Pair<>(indiceH,valeurCourante);
                 if(mouv == Mouvement.GAUCHE)
                     return new Pair<>(indiceH,valeurCourante);
                 if(mouv == Mouvement.BAS)
                     return new Pair<>(indiceV,valeurCourante);
-
                 return new Pair<>(indiceV,valeurCourante);
             }
         }
@@ -148,11 +153,18 @@ public class ModeleJeu {
             return new Pair<>(indiceH,valeurCourante);
         if(mouv == Mouvement.BAS)
             return new Pair<>(indiceV,valeurCourante);
-        
         return new Pair<>(indiceV,valeurCourante);
+    }
 
-
-
+    public void undo() {
+        if (premierCoup && !undoDejaFait) {
+            undoDejaFait = true;
+            for (int i = 0; i < taille; i++) {
+                for (int j = 0; j < taille; j++) {
+                    grille[i][j] = grilleN_1[i][j];
+                }
+            }
+        }
     }
 
     private boolean moveDroite() {
