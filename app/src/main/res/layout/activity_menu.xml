@@ -3,7 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:name="fr.univ_orleans.a2048.Fragments.MenuFragment"/>
+    android:name="fr.univ_orleans.a2048.Fragments.MenuFragment"
+    android:orientation="vertical"/>
 
 
 <!-- ancien activity_menu -->
