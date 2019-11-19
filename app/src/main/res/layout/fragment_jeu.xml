@@ -67,267 +67,141 @@
         android:layout_height="wrap_content"
         android:layout_weight="5"
         android:orientation="vertical"
-        android:background="#BBADA0">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text=""/>
-
+        android:background="#BBADA0"
+        android:padding="4dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="7">
+            android:layout_weight="1">
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:text=""/>
+                android:foreground="@color/btnColor"/>
 
 
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:text=""/>
-
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:text=""/>
+                android:foreground="@color/btnColor"/>
 
         </LinearLayout>
 
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text=""/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="7">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"
-                android:text=""/>
-            <Button
+            android:layout_weight="1">
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
 
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-
-
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
 
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
+                android:foreground="@color/btnColor"/>
 
         </LinearLayout>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="7">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-            <Button
+            android:layout_weight="1">
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-
-
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
+                android:foreground="@color/btnColor"/>
 
         </LinearLayout>
 
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="7">
+            android:layout_weight="1">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
+                android:foreground="@color/btnColor"/>
 
 
-            <Button
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
-
-            <Button
+                android:foreground="@color/btnColor"/>
+            
+            <fr.univ_orleans.a2048.Layouts.SquareButton
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="@color/btnColor"/>
+                android:foreground="@color/btnColor"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="5"/>
 
         </LinearLayout>
 
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
 
 
     </fr.univ_orleans.a2048.Layouts.SquareLayout>
