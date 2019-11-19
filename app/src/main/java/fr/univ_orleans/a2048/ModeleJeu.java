@@ -34,13 +34,13 @@ public class ModeleJeu {
         generationAleatoire(2);
     }
 
-    public void move(Mouvement horizontal, Mouvement vertical){
+    public void move(Mouvement movement) {
         if (!premierCoup) premierCoup = true;
         int valeurCourante;
         int indice;
         grilleModifiee = false;
         Pair<Integer, Integer> indiceEtvaleurCourante;
-        if(vertical == Mouvement.HAUT){
+        if(movement == Mouvement.HAUT){
             for (int i = 0; i < taille; i++) {
                 indice = 0;
                 valeurCourante =- 1;
@@ -50,8 +50,8 @@ public class ModeleJeu {
                     valeurCourante = indiceEtvaleurCourante.second;
                 }
             }
-        }else if(vertical == Mouvement.BAS){
-            for(int i = taille - 1; i >= 0; i--){
+        }else if(movement == Mouvement.BAS) {
+            for(int i = taille - 1; i >= 0; i--) {
                 indice = taille - 1;
                 valeurCourante =- 1;
                 for(int j = 0; j < taille; j++){
@@ -60,7 +60,7 @@ public class ModeleJeu {
                     valeurCourante = indiceEtvaleurCourante.second;
                 }
             }
-        }else if(horizontal == Mouvement.DROITE){
+        }else if(movement == Mouvement.DROITE){
             for (int i = 0; i < taille; i++) {
                 indice = taille - 1;
                 valeurCourante = - 1;
@@ -70,7 +70,7 @@ public class ModeleJeu {
                     valeurCourante = indiceEtvaleurCourante.second;
                 }
             }
-        }else if(horizontal == Mouvement.GAUCHE){
+        }else if(movement == Mouvement.GAUCHE){
             for (int i = 0; i < taille; i++) {
                 indice = 0;
                 valeurCourante = - 1;
