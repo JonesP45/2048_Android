@@ -16,6 +16,11 @@ public class MenuActivity extends AppCompatActivity  implements MenuFragment.OnB
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_activity);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container, MenuFragment.newInstance())
+                    .commitNow();
+        }
     }
 
     // --------------

@@ -6,11 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import fr.univ_orleans.a2048.R;
 
 public class MenuFragment extends Fragment implements View.OnClickListener {
+
+    public static MenuFragment newInstance() {
+        return new MenuFragment();
+    }
 
     //2 - Declare callback
     private OnButtonClickedListener mCallback;
@@ -23,10 +29,10 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
     // --------------
 
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
         //Inflate the layout of MainFragment
         View result = inflater.inflate(R.layout.menu_fragment, container, false);
 
@@ -35,6 +41,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         result.findViewById(R.id.fragment_menu_bouton_meilleur_score).setOnClickListener(this);
 
         return result;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        // TODO: Use the ViewModel
     }
 
     @Override
