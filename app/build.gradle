@@ -19,7 +19,7 @@ android {
     }
 }
 repositories {
-    maven{
+    maven {
         url "https://maven.google.com"
     }
 }

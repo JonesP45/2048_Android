@@ -1,4 +1,4 @@
-package fr.univ_orleans.a2048.Activities;
+package fr.univ_orleans.a2048.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import fr.univ_orleans.a2048.Fragments.MenuFragment;
+import fr.univ_orleans.a2048.fragments.MenuFragment;
 import fr.univ_orleans.a2048.R;
 
 public class MenuActivity extends AppCompatActivity  implements MenuFragment.OnButtonClickedListener {
@@ -15,7 +15,7 @@ public class MenuActivity extends AppCompatActivity  implements MenuFragment.OnB
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_menu);
+        setContentView(R.layout.menu_activity);
     }
 
     // --------------

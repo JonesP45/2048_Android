@@ -1,4 +1,4 @@
-package fr.univ_orleans.a2048.Layouts;
+package fr.univ_orleans.a2048.layouts;
 
 import android.content.Context;
 import android.os.Build;

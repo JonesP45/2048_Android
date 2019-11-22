@@ -4,7 +4,7 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
-import fr.univ_orleans.a2048.Activities.JeuActivity;
+import fr.univ_orleans.a2048.activities.JeuActivity;
 
 public class SwipeGestureDetector extends GestureDetector {
 
@@ -14,6 +14,7 @@ public class SwipeGestureDetector extends GestureDetector {
         LEFT_TO_RIGHT, RIGHT_TO_LEFT, TOP_TO_BOTTOM, BOTTOM_TO_TOP
     }
 
+//    public SwipeGestureDetector(final JeuActivity context) {
     public SwipeGestureDetector(final JeuActivity context) {
         super(context, new GestureDetector.SimpleOnGestureListener() {
             @Override

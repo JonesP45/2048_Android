@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="fr.univ_orleans.a2048.Fragments.ScoreFragment"
+    tools:context="fr.univ_orleans.a2048.fragments.ScoreFragment"
     android:gravity="center"
     android:background="#D8DCF0">
 

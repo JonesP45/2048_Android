@@ -1,4 +1,4 @@
-package fr.univ_orleans.a2048.Fragments;
+package fr.univ_orleans.a2048.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -28,7 +28,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         //Inflate the layout of MainFragment
-        View result = inflater.inflate(R.layout.fragment_menu, container, false);
+        View result = inflater.inflate(R.layout.menu_fragment, container, false);
 
         //Set onClickListener to button "SHOW ME DETAILS"
         result.findViewById(R.id.fragment_menu_bouton_nouveau_jeu).setOnClickListener(this);

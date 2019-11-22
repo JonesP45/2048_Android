@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fr.univ_orleans.a2048.Fragments.MenuFragment"
+    tools:context="fr.univ_orleans.a2048.fragments.MenuFragment"
     android:gravity="center"
     android:orientation="vertical"
     android:background="#D8DCF0">
