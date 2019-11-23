@@ -1,5 +1,8 @@
 package fr.univ_orleans.a2048.fragments;
 
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -98,7 +101,12 @@ public class JeuFragment extends Fragment {
             for (int j = 0; j < mModele.getTailleGrille(); j++) {
                 mGridButtons[i][j].setText("");
                 int cellule = mModele.getGrille()[i][j];
-                if (cellule > 0) mGridButtons[i][j].setText(Integer.toString(cellule));
+                if (cellule > 0) {
+//                    ColorDrawable colorDrawable = new ColorDrawable();
+//                    colorDrawable.setColor(getResources().getColor(R.color.btnColorBis));
+//                    mGridButtons[i][j].setForeground(colorDrawable);
+                    mGridButtons[i][j].setText(Integer.toString(cellule));
+                }
             }
         }
     }

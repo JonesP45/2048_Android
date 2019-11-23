@@ -3,7 +3,21 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#000000</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="btnColor">#00CDC1B5</color>
+
+    <color name="btnColor0">#ADADAD</color>
+    <color name="btnColor2">#ADADAD</color>
+    <color name="btnColor4">#ADADAD</color>
+    <color name="btnColor8">#ADADAD</color>
+    <color name="btnColor16">#ADADAD</color>
+    <color name="btnColor32">#ADADAD</color>
+    <color name="btnColor64">#ADADAD</color>
+    <color name="btnColor128">#ADADAD</color>
+    <color name="btnColor256">#ADADAD</color>
+    <color name="btnColor512">#ADADAD</color>
+    <color name="btnColor1024">#ADADAD</color>
+    <color name="btnColor2048">#ADADAD</color>
+
+    <color name="bkSquareLayoutColor">#535353</color>
 
     <color name="black_overlay">#66000000</color>
 </resources>

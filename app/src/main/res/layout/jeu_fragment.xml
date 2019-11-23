@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/test"
+    android:id="@+id/jeu"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.test.TestFragment"
-
-    android:gravity="center"
-    android:background="#D8DCF0"
     android:layout_weight="7"
+    android:background="#D8DCF0"
+    android:gravity="center|center_horizontal|center_vertical"
     android:orientation="vertical"
-    android:paddingRight="16dp"
     android:paddingLeft="16dp"
-    android:paddingBottom="16dp">
+    android:paddingRight="16dp"
+    android:paddingBottom="16dp"
+    tools:context="fr.univ_orleans.a2048.fragments.JeuFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -24,14 +22,14 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
+            android:layout_weight="2"
             android:text="2048"
-            android:textSize="45dp"
-            android:layout_weight="2"/>
+            android:textSize="45dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="2"/>
+            android:layout_weight="2" />
 
 
         <Button
@@ -58,56 +56,94 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="15dp"
-            android:text="Join the numbers and get to the "/>
+            android:layout_weight="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2" />
+
+
+        <Button
+            android:id="@+id/button_undo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="undo" />
+
+        <Button
+            android:id="@+id/button_restart"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:text="restart" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:textSize="15dp"
+            android:text="Join the numbers and get to the "
+            android:textSize="15dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:text="2048 tile!"
-            android:textStyle="bold"/>
+            android:textSize="15dp"
+            android:textStyle="bold" />
     </LinearLayout>
+
     <fr.univ_orleans.a2048.layouts.SquareLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="5"
-        android:orientation="vertical"
-        android:background="#BBADA0"
-        android:padding="4dp">
+        android:background="@drawable/border_square_layout"
+        android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
+            android:layout_weight="5"
+            android:orientation="horizontal">
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_0_0"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_0_1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_0_2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_0_3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
         </LinearLayout>
 
@@ -115,114 +151,125 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="5">
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_1_2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_1_3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
         </LinearLayout>
-
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="5">
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_2_0"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_2_1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_2_2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_2_3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
         </LinearLayout>
-
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1">
+            android:layout_weight="5">
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_3_0"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_3_1"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_3_2"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
             <fr.univ_orleans.a2048.layouts.SquareButton
                 android:id="@+id/button_3_3"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:foreground="@color/btnColor" />
+                android:layout_margin="0.025in"
+                android:layout_weight="5"
+                android:background="@drawable/border_square_button" />
 
         </LinearLayout>
+
     </fr.univ_orleans.a2048.layouts.SquareLayout>
 
 </LinearLayout>
