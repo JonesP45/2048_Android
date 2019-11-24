@@ -3,7 +3,10 @@ package fr.univ_orleans.a2048.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import fr.univ_orleans.a2048.fragments.JeuFragment;
@@ -11,10 +14,11 @@ import fr.univ_orleans.a2048.ModeleJeu;
 import fr.univ_orleans.a2048.R;
 import fr.univ_orleans.a2048.SwipeGestureDetector;
 
-public class JeuActivity extends AppCompatActivity {
+public class JeuActivity extends AppCompatActivity /*implements JeuFragment.OnButtonClickedListener*/ {
 
     private SwipeGestureDetector mGestureDetector;
     private JeuFragment mJeuFragment;
+//    private Button mButtonUndo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +30,14 @@ public class JeuActivity extends AppCompatActivity {
                     .replace(R.id.container, mJeuFragment)
                     .commitNow();
         }
+//        mButtonUndo = mJeuFragment.getmButton_undo();
+//        mButtonUndo.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.e(getClass().getSimpleName(),"undo clicked !");
+//                mJeuFragment.undo();
+//            }
+//        });
         mGestureDetector = new SwipeGestureDetector(this);
     }
 
@@ -34,6 +46,30 @@ public class JeuActivity extends AppCompatActivity {
     public boolean dispatchTouchEvent(MotionEvent event) {
         return mGestureDetector.onTouchEvent(event);
     }
+
+//    @Override
+//    public void onUndoClicked(View view) {
+//        Log.e(getClass().getSimpleName(),"undo clicked !");
+//        mJeuFragment.undo();
+//    }
+//
+//    @Override
+//    public void onRestartClicked(View view) {
+//        Log.e(getClass().getSimpleName(),"restart clicked !");
+//        mJeuFragment.restart();
+//    }
+
+    //    @Override
+//    public void onClick(View v) {
+//        if (v.getId() == R.id.button_undo) {
+//            Toast.makeText(this, "undo", Toast.LENGTH_SHORT).show();
+//            mJeuFragment.undo();
+//        }
+//        if (v.getId() == R.id.button_restart) {
+//            Toast.makeText(this, "restart", Toast.LENGTH_SHORT).show();
+//            mJeuFragment.restart();
+//        }
+//    }
 
     //pour l'instant permet juste de savoir par ou on swipe
     public void onSwipe(SwipeGestureDetector.SwipeDirection direction) {

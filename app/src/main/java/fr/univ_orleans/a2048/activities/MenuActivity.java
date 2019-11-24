@@ -10,7 +10,7 @@ import android.view.View;
 import fr.univ_orleans.a2048.fragments.MenuFragment;
 import fr.univ_orleans.a2048.R;
 
-public class MenuActivity extends AppCompatActivity  implements MenuFragment.OnButtonClickedListener {
+public class MenuActivity extends AppCompatActivity implements MenuFragment.OnButtonClickedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -7,7 +7,7 @@ import fr.univ_orleans.a2048.R;
 public class Cellule {
 
     private Resources resources = Resources.getSystem();
-    private final int couleur0 = resources.getColor(R.color.btnColor);
+    private final int couleur0 = resources.getColor(R.color.btnColor0);
 //    private final int couleur2 = resources.getColor(R.color.btnColor);
 //    private final int couleur4 = resources.getColor(R.color.btnColor);
 //    private final int couleur8 = resources.getColor(R.color.btnColor);
@@ -19,8 +19,6 @@ public class Cellule {
     private int couleur;
 
     public Cellule(int valeur, int ligne, int colonne, int couleur) {
-//        Resources res = getResources();
-        int color = resources.getColor(R.color.btnColor);
         this.valeur = valeur;
         this.ligne = ligne;
         this.colonne = colonne;

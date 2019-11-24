@@ -52,7 +52,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-
         // 4 - Call the method that creating callback after being attached to parent activity
         this.createCallbackToParentActivity();
     }

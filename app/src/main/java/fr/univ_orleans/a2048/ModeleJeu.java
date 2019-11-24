@@ -21,37 +21,38 @@ public class ModeleJeu {
     private boolean undoDejaFait = false;
 
 
-    private void afficheGrille() {
-        System.out.println();
-        for (int i = 0; i < tailleGrille; i++) {
-            for (int j = 0; j < tailleGrille; j++) {
-                System.out.print(grille[i][j] + "  ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
-    private void afficheListe() {
-        System.out.println();
-        for (Pair<Integer, Integer> integerIntegerPair : listeCaseVide) {
-            System.out.print("[" + integerIntegerPair.first + ", "
-                    + integerIntegerPair.second + "] -> ");
-        }
-        System.out.println();
-    }
+//    private void afficheGrille() {
+//        System.out.println();
+//        for (int i = 0; i < tailleGrille; i++) {
+//            for (int j = 0; j < tailleGrille; j++) {
+//                System.out.print(grille[i][j] + "  ");
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
+//    }
+//    private void afficheListe() {
+//        System.out.println();
+//        for (Pair<Integer, Integer> integerIntegerPair : listeCaseVide) {
+//            System.out.print("[" + integerIntegerPair.first + ", "
+//                    + integerIntegerPair.second + "] -> ");
+//        }
+//        System.out.println();
+//    }
 
     public static ModeleJeu newInstance(int taille) {
         return new ModeleJeu(taille);
     }
     private ModeleJeu(int taille) {
         tailleGrille = taille;
-        initialisation();
-    }
-    private void initialisation() {
-        score = 0;
         grille = new int[tailleGrille][tailleGrille];
         grilleN_1 = new int[tailleGrille][tailleGrille];
         listeCaseVide = new ArrayList<>();
+        initialisation();
+    }
+    public void initialisation() {
+        score = 0;
+        listeCaseVide.clear();
         for (int i = 0; i < tailleGrille; i++) {
             for (int j = 0; j < tailleGrille; j++) {
                 grille[i][j] = 0;
@@ -61,7 +62,6 @@ public class ModeleJeu {
         }
         generationAleatoire(2); //deux chiffres 2 généré aléatoirement au début
         generationAleatoire(2);
-        afficheGrille();
     }
 
     public boolean move(Mouvement movement) {
@@ -86,7 +86,6 @@ public class ModeleJeu {
             generationAleatoire(0);
             undoDejaFait = false;
         }
-        afficheGrille();
         return changementDansGrille;
     }
     private boolean moveDroite() {
@@ -258,10 +257,7 @@ public class ModeleJeu {
                     grille[i][j] = grilleN_1[i][j];
                 }
             }
-            afficheGrille();
         }
-        else
-            System.out.println("undo impossible");
     }
 
     private void modifScore(int ajout) { score += ajout; }
