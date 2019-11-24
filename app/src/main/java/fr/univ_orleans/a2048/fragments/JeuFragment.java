@@ -1,5 +1,8 @@
 package fr.univ_orleans.a2048.fragments;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,12 +13,37 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
+
+import java.util.Objects;
 
 import fr.univ_orleans.a2048.ModeleJeu;
 import fr.univ_orleans.a2048.R;
 
-public class JeuFragment extends Fragment /*implements View.OnClickListener*/ {
+public class JeuFragment extends Fragment implements View.OnClickListener {
+
+    private class WinDialogFragment extends DialogFragment {
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstanceState) {
+            // Use the Builder class for convenient dialog construction
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setMessage("You win");
+//                    .setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            // FIRE ZE MISSILES!
+//                        }
+//                    })
+//                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+//                        public void onClick(DialogInterface dialog, int id) {
+//                            // User cancelled the dialog
+//                        }
+//                    });
+            // Create the AlertDialog object and return it
+            return builder.create();
+        }
+    }
 
 //    private OnButtonClickedListener mCallback;
 //
@@ -59,6 +87,7 @@ public class JeuFragment extends Fragment /*implements View.OnClickListener*/ {
         mButton_undo = view.findViewById(R.id.button_undo);
         Log.e(getClass().getSimpleName(), mButton_undo.getText().toString());
         mButton_restart = view.findViewById(R.id.button_restart);
+        mButton_undo.setOnClickListener(this);
 //        mButton_undo.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
@@ -123,21 +152,44 @@ public class JeuFragment extends Fragment /*implements View.OnClickListener*/ {
 //        this.createCallbackToParentActivity();
 //    }
 
-//    @Override
-//    public void onClick(View v) {
-//        if (v.getId() == R.id.button_undo) {
-//            Log.e(getClass().getSimpleName(),"Button clicked !");
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.button_undo) {
+            Log.e(getClass().getSimpleName(),"Button clicked !");
+            undo();
 //            mCallback.onUndoClicked(v);
-//        }
-//        if (v.getId() == R.id.button_restart) {
-//            Log.e(getClass().getSimpleName(),"Button clicked !");
+        }
+        if (v.getId() == R.id.button_restart) {
+            Log.e(getClass().getSimpleName(),"Button clicked !");
 //            mCallback.onRestartClicked(v);
-//        }
-//    }
+        }
+    }
 
     public void move(ModeleJeu.Mouvement mouvement) {
         mModele.move(mouvement);
         updateTextButtons();
+        if (gameWin()) {
+//            Toast.makeText(getContext(), "win", Toast.LENGTH_SHORT).show();
+//            WinDialogFragment winDialogFragment = new WinDialogFragment();
+//            winDialogFragment.show();
+//            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+//            builder.setMessage("You win")
+//                    .setTitle("Win");
+//            AlertDialog dialog = builder.create();
+//            dialog.show();
+        }
+        else if (gameOver()) {
+
+        }
+
+    }
+
+    private boolean gameWin() {
+        return mModele.isWin();
+    }
+
+    private boolean gameOver() {
+        return mModele.isGameOver();
     }
 
     public void undo() {
@@ -156,15 +208,47 @@ public class JeuFragment extends Fragment /*implements View.OnClickListener*/ {
                 mGridButtons[i][j].setText("");
                 int cellule = mModele.getGrille()[i][j];
                 if (cellule > 0) {
-                    mGridButtons[i][j].setText(Integer.toString(cellule));
+                    mGridButtons[i][j].setText(String.valueOf(cellule));
                 }
+                mGridButtons[i][j].setBackground(updateBackgroundButtons(cellule));
             }
         }
     }
 
-    public Button getmButton_undo() {
-        return mButton_undo;
+    private Drawable updateBackgroundButtons(int valeur) {
+        switch (valeur) {
+            case 0:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_0);
+            case 2:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_2);
+            case 4:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_4);
+            case 8:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_8);
+            case 16:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_16);
+            case 32:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_32);
+            case 64:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_64);
+            case 128:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_128);
+            case 256:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_256);
+            case 512:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_512);
+            case 1024:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_1024);
+            case 2048:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_2048);
+            default:
+                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_0);
+        }
     }
+
+//    public Button getmButton_undo() {
+//        return mButton_undo;
+//    }
 
     //    private void createCallbackToParentActivity(){
 //        try {

@@ -6,8 +6,6 @@ import java.util.ArrayList;
 
 public class ModeleJeu {
 
-    public static ModeleJeu singleton;
-
     public enum Mouvement {
         DROITE, GAUCHE, HAUT, BAS
     }
@@ -20,25 +18,6 @@ public class ModeleJeu {
     private boolean premierCoupFait = false;
     private boolean undoDejaFait = false;
 
-
-//    private void afficheGrille() {
-//        System.out.println();
-//        for (int i = 0; i < tailleGrille; i++) {
-//            for (int j = 0; j < tailleGrille; j++) {
-//                System.out.print(grille[i][j] + "  ");
-//            }
-//            System.out.println();
-//        }
-//        System.out.println();
-//    }
-//    private void afficheListe() {
-//        System.out.println();
-//        for (Pair<Integer, Integer> integerIntegerPair : listeCaseVide) {
-//            System.out.print("[" + integerIntegerPair.first + ", "
-//                    + integerIntegerPair.second + "] -> ");
-//        }
-//        System.out.println();
-//    }
 
     public static ModeleJeu newInstance(int taille) {
         return new ModeleJeu(taille);
@@ -262,6 +241,17 @@ public class ModeleJeu {
 
     private void modifScore(int ajout) { score += ajout; }
 
+    public boolean isWin() {
+        for (int i = 0; i < tailleGrille; i++) {
+            for (int j = 0; j < tailleGrille; j++) {
+                if (grille[i][j] == 8) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     public boolean isGameOver() { return listeCaseVide.isEmpty() && verifGameOver(); }
     private boolean verifGameOver(){
         for (int i = 1; i < tailleGrille; i++) {
@@ -308,3 +298,22 @@ public class ModeleJeu {
     }
 
 }
+
+//    private void afficheGrille() {
+//        System.out.println();
+//        for (int i = 0; i < tailleGrille; i++) {
+//            for (int j = 0; j < tailleGrille; j++) {
+//                System.out.print(grille[i][j] + "  ");
+//            }
+//            System.out.println();
+//        }
+//        System.out.println();
+//    }
+//    private void afficheListe() {
+//        System.out.println();
+//        for (Pair<Integer, Integer> integerIntegerPair : listeCaseVide) {
+//            System.out.print("[" + integerIntegerPair.first + ", "
+//                    + integerIntegerPair.second + "] -> ");
+//        }
+//        System.out.println();
+//    }

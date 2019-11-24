@@ -5,17 +5,17 @@
     <color name="colorAccent">#D81B60</color>
 
     <color name="btnColor0">#ADADAD</color>
-    <color name="btnColor2">#ADADAD</color>
-    <color name="btnColor4">#ADADAD</color>
-    <color name="btnColor8">#ADADAD</color>
-    <color name="btnColor16">#ADADAD</color>
-    <color name="btnColor32">#ADADAD</color>
-    <color name="btnColor64">#ADADAD</color>
-    <color name="btnColor128">#ADADAD</color>
-    <color name="btnColor256">#ADADAD</color>
-    <color name="btnColor512">#ADADAD</color>
-    <color name="btnColor1024">#ADADAD</color>
-    <color name="btnColor2048">#ADADAD</color>
+    <color name="btnColor2">#FFE8DC</color>
+    <color name="btnColor4">#FFDCC8</color>
+    <color name="btnColor8">#F0823C</color>
+    <color name="btnColor16">#F06428</color>
+    <color name="btnColor32">#F03214</color>
+    <color name="btnColor64">#EE1E00</color>
+    <color name="btnColor128">#FFFF78</color>
+    <color name="btnColor256">#FFFF5A</color>
+    <color name="btnColor512">#FFFF3C</color>
+    <color name="btnColor1024">#FFFF1E</color>
+    <color name="btnColor2048">#FFC107</color>
 
     <color name="bkSquareLayoutColor">#535353</color>
 

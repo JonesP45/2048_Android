@@ -1,49 +1,33 @@
 package fr.univ_orleans.a2048.layouts;
 
-import android.content.res.Resources;
-
-import fr.univ_orleans.a2048.R;
-
 public class Cellule {
 
-    private Resources resources = Resources.getSystem();
-    private final int couleur0 = resources.getColor(R.color.btnColor0);
-//    private final int couleur2 = resources.getColor(R.color.btnColor);
-//    private final int couleur4 = resources.getColor(R.color.btnColor);
-//    private final int couleur8 = resources.getColor(R.color.btnColor);
-//    private final int couleur16 = resources.getColor(R.color.btnColor);
-//    private final int couleur32 = resources.getColor(R.color.btnColor);
-//    private final int couleur64 = resources.getColor(R.color.btnColor);
+    private int valeur, ligne, colonne, valeur_ant, ligne_ant, colonne_ant;
 
-    private int valeur, ligne, colonne;
-    private int couleur;
-
-    public Cellule(int valeur, int ligne, int colonne, int couleur) {
-        this.valeur = valeur;
+    public Cellule(int ligne, int colonne) {
+        this.valeur = 0;
         this.ligne = ligne;
         this.colonne = colonne;
-        switch (valeur) {
-            case 0:
-                this.couleur = couleur0;
-            case 2:
-//                this.couleur = couleur2;
-                break;
-            case 4:
-//                this.couleur = couleur4;
-                break;
-            case 8:
-//                this.couleur = couleur8;
-                break;
-            case 16:
-//                this.couleur = couleur16;
-                break;
-            case 32:
-//                this.couleur = couleur32;
-                break;
-            case 64:
-//                this.couleur = couleur64;
-                break;
-        }
+        this.valeur_ant = -1;
+        this.ligne_ant = -1;
+        this.colonne_ant = -1;
+    }
+
+    public void move(int nouvelleValeur, int i, int j) {
+        valeur = nouvelleValeur;
+        ligne_ant = ligne;
+        colonne_ant = colonne;
+        ligne = i;
+        colonne = j;
+    }
+
+    public void undo() {
+        valeur = valeur_ant;
+        valeur_ant = -1;
+        ligne = ligne_ant;
+        ligne_ant = -1;
+        colonne = colonne_ant;
+        colonne_ant = -1;
     }
 
     public int getValeur() {
@@ -55,8 +39,11 @@ public class Cellule {
     public int getColonne() {
         return colonne;
     }
-    public int getCouleur() {
-        return couleur;
+    public int getLigne_ant() {
+        return ligne_ant;
+    }
+    public int getColonne_ant() {
+        return colonne_ant;
     }
 
 }
