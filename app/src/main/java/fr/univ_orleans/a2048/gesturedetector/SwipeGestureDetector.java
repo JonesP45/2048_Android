@@ -1,4 +1,4 @@
-package fr.univ_orleans.a2048;
+package fr.univ_orleans.a2048.gesturedetector;
 
 import android.util.Log;
 import android.view.GestureDetector;

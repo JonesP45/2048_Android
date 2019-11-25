@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +17,7 @@ import androidx.fragment.app.Fragment;
 
 import java.util.Objects;
 
-import fr.univ_orleans.a2048.ModeleJeu;
+import fr.univ_orleans.a2048.modele.ModeleJeu;
 import fr.univ_orleans.a2048.R;
 
 public class JeuFragment extends Fragment implements View.OnClickListener {

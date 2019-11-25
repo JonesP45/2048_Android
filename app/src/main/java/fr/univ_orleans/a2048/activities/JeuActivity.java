@@ -7,9 +7,9 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.widget.Toast;
 
-import fr.univ_orleans.a2048.SwipeGestureDetector;
+import fr.univ_orleans.a2048.gesturedetector.SwipeGestureDetector;
 import fr.univ_orleans.a2048.fragments.JeuFragment;
-import fr.univ_orleans.a2048.ModeleJeu;
+import fr.univ_orleans.a2048.modele.ModeleJeu;
 import fr.univ_orleans.a2048.R;
 
 public class JeuActivity extends AppCompatActivity {
