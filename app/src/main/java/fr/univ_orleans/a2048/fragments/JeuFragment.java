@@ -4,12 +4,11 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,17 +44,10 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-//    private OnButtonClickedListener mCallback;
-//
-//    public interface OnButtonClickedListener {
-//        void onUndoClicked(View view);
-//        void onRestartClicked(View view);
-//    }
-
     private ModeleJeu mModele;
 
-    private Button mButton_undo;
-    private Button mButton_restart;
+    private Button mButtonUndo;
+    private Button mButtonRestart;
     private Button[][] mGridButtons;
 //    private Button mButton_0_0;
 //    private Button mButton_0_1;
@@ -82,27 +74,12 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.jeu_fragment, container, false);
+        final View view = inflater.inflate(R.layout.jeu_fragment, container, false);
         mModele = ModeleJeu.newInstance(4);
-        mButton_undo = view.findViewById(R.id.button_undo);
-        Log.e(getClass().getSimpleName(), mButton_undo.getText().toString());
-        mButton_restart = view.findViewById(R.id.button_restart);
-        mButton_undo.setOnClickListener(this);
-//        mButton_undo.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Log.e(getClass().getSimpleName(),"Undo clicked !");
-//                undo();
-//            }
-//        });
-//        mButton_restart.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                restart();
-//            }
-//        });
-//        view.findViewById(R.id.button_undo).setOnClickListener(this);
-//        view.findViewById(R.id.button_restart).setOnClickListener(this);
+        mButtonUndo = view.findViewById(R.id.button_undo);
+        mButtonUndo.setOnClickListener(this);
+        mButtonRestart = view.findViewById(R.id.button_restart);
+        mButtonRestart.setOnClickListener(this);
         Button mButton_0_0 = view.findViewById(R.id.button_0_0);
         Button mButton_0_1 = view.findViewById(R.id.button_0_1);
         Button mButton_0_2 = view.findViewById(R.id.button_0_2);
@@ -146,22 +123,13 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         updateTextButtons();
     }
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        this.createCallbackToParentActivity();
-//    }
-
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.button_undo) {
-            Log.e(getClass().getSimpleName(),"Button clicked !");
             undo();
-//            mCallback.onUndoClicked(v);
         }
         if (v.getId() == R.id.button_restart) {
-            Log.e(getClass().getSimpleName(),"Button clicked !");
-//            mCallback.onRestartClicked(v);
+            restart();
         }
     }
 
@@ -245,17 +213,5 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
                 return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_0);
         }
     }
-
-//    public Button getmButton_undo() {
-//        return mButton_undo;
-//    }
-
-    //    private void createCallbackToParentActivity(){
-//        try {
-//            mCallback = (JeuFragment.OnButtonClickedListener) getActivity();
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(e.toString()+ " must implement OnButtonClickedListener");
-//        }
-//    }
 
 }

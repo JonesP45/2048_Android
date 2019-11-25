@@ -6,44 +6,46 @@ import android.view.MotionEvent;
 
 import fr.univ_orleans.a2048.activities.JeuActivity;
 
-public class SwipeGestureDetector extends GestureDetector {
+public class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListener {
 
-    private final static int DELTA_MIN = 50;
+    private final JeuActivity jeuActivity;
 
-    public static enum SwipeDirection {
+    private final int DELTA_MIN = 50;
+
+    public enum SwipeDirection {
         LEFT_TO_RIGHT, RIGHT_TO_LEFT, TOP_TO_BOTTOM, BOTTOM_TO_TOP
     }
 
-//    public SwipeGestureDetector(final JeuActivity context) {
     public SwipeGestureDetector(final JeuActivity context) {
-        super(context, new GestureDetector.SimpleOnGestureListener() {
-            @Override
-            //gère les swipes
-            public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-                Log.i("DEBUG", e1 + " - " + e2);
+        super();
+        jeuActivity = context;
+    }
 
-                float deltaX = e2.getX() - e1.getX();
-                float deltaY = e2.getY() - e1.getY();
+    @Override
+    //gère les swipes
+    public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+        Log.i("DEBUG", e1 + " - " + e2);
 
-                if (Math.abs(deltaX) > Math.abs(deltaY)) {
-                    if (Math.abs(deltaX) >= DELTA_MIN) {
-                        if (deltaX < 0)
-                            context.onSwipe(SwipeDirection.RIGHT_TO_LEFT);
-                        else
-                            context.onSwipe(SwipeDirection.LEFT_TO_RIGHT);
-                        return true;
-                    }
-                } else {
-                    if (Math.abs(deltaY) >= DELTA_MIN) {
-                        if (deltaY < 0)
-                            context.onSwipe(SwipeDirection.BOTTOM_TO_TOP);
-                        else
-                            context.onSwipe(SwipeDirection.TOP_TO_BOTTOM);
-                        return true;
-                    }
-                }
-                return false;
+        float deltaX = e2.getX() - e1.getX();
+        float deltaY = e2.getY() - e1.getY();
+
+        if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            if (Math.abs(deltaX) >= DELTA_MIN) {
+                if (deltaX < 0)
+                    jeuActivity.onSwipe(SwipeDirection.RIGHT_TO_LEFT);
+                else
+                    jeuActivity.onSwipe(SwipeDirection.LEFT_TO_RIGHT);
+                return true;
             }
-        });
+        } else {
+            if (Math.abs(deltaY) >= DELTA_MIN) {
+                if (deltaY < 0)
+                    jeuActivity.onSwipe(SwipeDirection.BOTTOM_TO_TOP);
+                else
+                    jeuActivity.onSwipe(SwipeDirection.TOP_TO_BOTTOM);
+                return true;
+            }
+        }
+        return false;
     }
 }
