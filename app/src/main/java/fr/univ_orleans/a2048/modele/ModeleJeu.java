@@ -1,6 +1,5 @@
 package fr.univ_orleans.a2048.modele;
 
-import android.util.Log;
 import android.util.Pair;
 
 import java.util.ArrayList;
@@ -12,7 +11,7 @@ public class ModeleJeu {
     }
 
     public enum State {
-        IN_GAME, WIN, ALREADY_WIN, LOSE, SAVE
+        IN_GAME, WIN, ALREADY_WIN, LOSE,SAVE
     }
 
     private State state;
@@ -249,15 +248,29 @@ public class ModeleJeu {
                 }
             }
         }
+        if (state == State.LOSE) {
+            state = State.IN_GAME;
+            for (int i = 0; i < tailleGrille; i++) {
+                for (int j = 0; j < tailleGrille; j++) {
+                    if (grille[i][j] >= 2048) {
+                        state = State.ALREADY_WIN;
+                    }
+                }
+            }
+        }
     }
 
     private void modifScore(int ajout) { score += ajout; }
 
     public boolean isWin() {
-        if (state == State.IN_GAME) {
+        if (state == State.WIN) {
+            state = State.ALREADY_WIN;
+            return true;
+        }
+        else if (state == State.IN_GAME) {
             for (int i = 0; i < tailleGrille; i++) {
                 for (int j = 0; j < tailleGrille; j++) {
-                    if (grille[i][j] == 2048) {
+                    if (grille[i][j] == 8) {
                         state = State.WIN;
                         return true;
                     }
@@ -268,40 +281,34 @@ public class ModeleJeu {
     }
 
     public boolean isGameOver() {
-        Log.e(getClass().getSimpleName(), state.toString());
-        return listeCaseVide.isEmpty() && verifGameOver();
+        if (state != State.LOSE) {
+            if (listeCaseVide.isEmpty() && verifGameOver()) {
+                state = State.LOSE;
+                return true;
+            }
+        }
+        return false;
     }
     private boolean verifGameOver(){
-//        for (int i = 1; i < tailleGrille; i++) {
-//            for (int j = 1; j < tailleGrille; j++) {
-//                if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] ||
-//                        grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
-//                    return false;
-//            }
-//        }
-//        for (int i = 1; i < tailleGrille - 1; i++) {
-//            for (int j = 1; j < tailleGrille - 1; j++) {
-//                if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] ||
-//                        grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
-//                    return false;
-//            }
-//        }
         for (int i = 0; i < tailleGrille; i++) {
             for (int j = 0; j < tailleGrille; j++) {
                 if (!((i == 0 && j == 0) || (i == 0 && j == tailleGrille - 1) ||
                         (i == tailleGrille - 1 && j == 0) || (i == tailleGrille - 1 && j == tailleGrille - 1))) {
-
                     if (i == 0) {
-
+                        if (grille[i + 1][j] == grille[i][j] || grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+                            return false;
                     }
                     else if (i == tailleGrille - 1) {
-
+                        if (grille[i - 1][j] == grille[i][j] || grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+                            return false;
                     }
                     else if (j == 0) {
-
+                        if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+                            return false;
                     }
                     else if (j == tailleGrille - 1) {
-
+                        if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] || grille[i][j - 1] == grille[i][j])
+                            return false;
                     }
                     else {
                         if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] ||
@@ -311,13 +318,8 @@ public class ModeleJeu {
                 }
             }
         }
-//        if (!(moveGauche() && moveDroite() && moveHaut() && moveBas()))
-        state = State.LOSE;
         return true;
     }
-//    public void setStateAlreadyWin() {
-//        state = State.ALREADY_WIN;
-//    }
 
     private void generationAleatoire(int nombre) {
         int nb = nombre;

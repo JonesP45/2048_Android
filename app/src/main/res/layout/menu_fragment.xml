@@ -7,7 +7,7 @@
     tools:context="fr.univ_orleans.a2048.fragments.MenuFragment"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="#D8DCF0">
+    android:background="@color/bkColor">
 
     <Button
         android:id="@+id/fragment_menu_bouton_reprendre_jeu"

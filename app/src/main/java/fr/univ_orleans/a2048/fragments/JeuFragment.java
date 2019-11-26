@@ -5,12 +5,10 @@ import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -48,8 +46,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
     private Button mButtonScore;
     private Button mButtonBestScore;
 
-    private Toast toast;
-
     public static JeuFragment newInstance() {
         return new JeuFragment();
     }
@@ -59,11 +55,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.jeu_fragment, container, false);
-        toast = new Toast(getContext());
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setView(view);
-
         mModele = ModeleJeu.newInstance(4);
         Button mButtonUndo = view.findViewById(R.id.button_undo);
         mButtonUndo.setOnClickListener(this);
@@ -136,7 +127,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
                     .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-//                            setState();
+
                         }
                     })
                     .setNegativeButton("Restart", new DialogInterface.OnClickListener() {
@@ -147,7 +138,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
                     });
             AlertDialog alertDialog = builder.show();
         }
-        else if (gameOver()) {
+        else if (gameOver() && mModele.getState() == ModeleJeu.State.LOSE) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("You lose!")
                     .setMessage("Score: " + mButtonScore.getText().toString())
@@ -167,10 +158,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         }
 
     }
-
-//    private void setState() {
-//        mModele.setStateAlreadyWin();
-//    }
 
     private boolean gameWin() {
         return mModele.isWin();

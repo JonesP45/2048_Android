@@ -6,7 +6,7 @@
     tools:context="fr.univ_orleans.a2048.fragments.ScoreFragment"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#D8DCF0">
+    android:background="@color/bkColor">
 
     <LinearLayout
         android:layout_width="match_parent"
