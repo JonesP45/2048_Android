@@ -2,6 +2,7 @@ package fr.univ_orleans.a2048.fragments;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,7 +21,15 @@ import java.util.Objects;
 import fr.univ_orleans.a2048.modele.ModeleJeu;
 import fr.univ_orleans.a2048.R;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class JeuFragment extends Fragment implements View.OnClickListener/*, WinDialogFragment.WinDialogListener*/ {
+
+    public static final String EXTRA_SCORE="Score";
+
+    private static final String PREFS_NAME="ScoreSharedPrefs";
+    private static final String PREF_KEY_SCORE="score";
+
 
     private ModeleJeu mModele;
 
@@ -96,6 +105,9 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         mGridButtons[3][1] = mButton_3_1;
         mGridButtons[3][2] = mButton_3_2;
         mGridButtons[3][3] = mButton_3_3;
+//        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+//        mButtonBestScore.setText(prefs.getString(PREF_KEY_SCORE, "0"));
+//        Log.e(getClass().getSimpleName(), prefs.getString(PREF_KEY_SCORE, "0"));
         return view;
     }
 
@@ -104,6 +116,25 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         super.onActivityCreated(savedInstanceState);
         // TODO: Use the ViewModel
         update();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        mButtonBestScore.setText(prefs.getString(PREF_KEY_SCORE, "0"));
+        Log.e(getClass().getSimpleName(), prefs.getString(PREF_KEY_SCORE, "0"));
+    }
+
+    @Override
+    public void onPause() {
+        String score = mButtonBestScore.getText().toString();
+        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putString(PREF_KEY_SCORE, score);
+        editor.commit(); // Meme si Anroid Studio dit le contraire, préférer quand même commit a apply...
+
+        super.onPause();
     }
 
     @Override

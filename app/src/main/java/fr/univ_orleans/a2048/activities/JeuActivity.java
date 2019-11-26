@@ -2,6 +2,7 @@ package fr.univ_orleans.a2048.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -14,6 +15,10 @@ import fr.univ_orleans.a2048.R;
 
 public class JeuActivity extends AppCompatActivity {
 
+//    public static final String EXTRA_SCORE="Score";
+//
+//    private static final String PREFS_NAME="ScoreSharedPrefs";
+//    private static final String PREF_KEY_SCORE="score";
 
     private GestureDetector mGestureDetector;
 
@@ -31,6 +36,28 @@ public class JeuActivity extends AppCompatActivity {
         }
         mGestureDetector = new GestureDetector(this, new SwipeGestureDetector(this));
     }
+
+
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+//
+//    }
+//
+//    @Override
+//    protected void onPause() {
+////        String titre = mEditTitre.getText().toString();
+////        String contenu = mEditContenu.getText().toString();
+//        SharedPreferences prefs = getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+//        SharedPreferences.Editor editor = prefs.edit();
+//        editor.putString(PREF_KEY_TITRE,titre);
+//        editor.putString(PREF_KEY_CONTENU,contenu);
+//        editor.commit(); // Meme si Anroid Studio dit le contraire, préférer quand même commit a apply...
+//
+//        super.onPause();
+//    }
+
 
     // redistribu tous les touchs au gestureDetector
     @Override
