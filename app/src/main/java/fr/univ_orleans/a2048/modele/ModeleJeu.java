@@ -1,5 +1,6 @@
 package fr.univ_orleans.a2048.modele;
 
+import android.util.Log;
 import android.util.Pair;
 
 import java.util.ArrayList;
@@ -10,6 +11,11 @@ public class ModeleJeu {
         DROITE, GAUCHE, HAUT, BAS
     }
 
+    public enum State {
+        IN_GAME, WIN, ALREADY_WIN, LOSE, SAVE
+    }
+
+    private State state;
     private int[][] grille;
     private int[][] grilleN_1;
     private int tailleGrille;
@@ -30,6 +36,7 @@ public class ModeleJeu {
         initialisation();
     }
     public void initialisation() {
+        state = State.IN_GAME;
         score = 0;
         listeCaseVide.clear();
         for (int i = 0; i < tailleGrille; i++) {
@@ -44,6 +51,7 @@ public class ModeleJeu {
     }
 
     public boolean move(Mouvement movement) {
+        if (state == State.LOSE) return false;
         if (!premierCoupFait) premierCoupFait = true;
         for (int i = 0; i < tailleGrille; i++) {
             for (int j = 0; j < tailleGrille; j++) {
@@ -100,6 +108,7 @@ public class ModeleJeu {
                             ajouterCaseVide(i, j);
                             supprimerCaseVide(i, indice);
                             grille[i][indice] = valeurCourante;
+                            if (!movement) movement = true;
                         }
                     }
                 }
@@ -140,6 +149,7 @@ public class ModeleJeu {
                             ajouterCaseVide(i, j);
                             supprimerCaseVide(i, indice);
                             grille[i][indice] = valeurCourante;
+                            if (!movement) movement = true;
                         }
                     }
                 }
@@ -180,6 +190,7 @@ public class ModeleJeu {
                             ajouterCaseVide(i, j);
                             supprimerCaseVide(indice, j);
                             grille[indice][j] = valeurCourante;
+                            if (!movement) movement = true;
                         }
                     }
                 }
@@ -220,6 +231,7 @@ public class ModeleJeu {
                             ajouterCaseVide(i, j);
                             supprimerCaseVide(indice, j);
                             grille[indice][j] = valeurCourante;
+                            if (!movement) movement = true;
                         }
                     }
                 }
@@ -242,27 +254,70 @@ public class ModeleJeu {
     private void modifScore(int ajout) { score += ajout; }
 
     public boolean isWin() {
-        for (int i = 0; i < tailleGrille; i++) {
-            for (int j = 0; j < tailleGrille; j++) {
-                if (grille[i][j] == 8) {
-                    return true;
+        if (state == State.IN_GAME) {
+            for (int i = 0; i < tailleGrille; i++) {
+                for (int j = 0; j < tailleGrille; j++) {
+                    if (grille[i][j] == 2048) {
+                        state = State.WIN;
+                        return true;
+                    }
                 }
             }
         }
         return false;
     }
 
-    public boolean isGameOver() { return listeCaseVide.isEmpty() && verifGameOver(); }
+    public boolean isGameOver() {
+        Log.e(getClass().getSimpleName(), state.toString());
+        return listeCaseVide.isEmpty() && verifGameOver();
+    }
     private boolean verifGameOver(){
-        for (int i = 1; i < tailleGrille; i++) {
-            for (int j = 1; j < tailleGrille; j++) {
-                if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] ||
-                        grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
-                    return false;
+//        for (int i = 1; i < tailleGrille; i++) {
+//            for (int j = 1; j < tailleGrille; j++) {
+//                if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] ||
+//                        grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+//                    return false;
+//            }
+//        }
+//        for (int i = 1; i < tailleGrille - 1; i++) {
+//            for (int j = 1; j < tailleGrille - 1; j++) {
+//                if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] ||
+//                        grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+//                    return false;
+//            }
+//        }
+        for (int i = 0; i < tailleGrille; i++) {
+            for (int j = 0; j < tailleGrille; j++) {
+                if (!((i == 0 && j == 0) || (i == 0 && j == tailleGrille - 1) ||
+                        (i == tailleGrille - 1 && j == 0) || (i == tailleGrille - 1 && j == tailleGrille - 1))) {
+
+                    if (i == 0) {
+
+                    }
+                    else if (i == tailleGrille - 1) {
+
+                    }
+                    else if (j == 0) {
+
+                    }
+                    else if (j == tailleGrille - 1) {
+
+                    }
+                    else {
+                        if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] ||
+                                grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+                            return false;
+                    }
+                }
             }
         }
+//        if (!(moveGauche() && moveDroite() && moveHaut() && moveBas()))
+        state = State.LOSE;
         return true;
     }
+//    public void setStateAlreadyWin() {
+//        state = State.ALREADY_WIN;
+//    }
 
     private void generationAleatoire(int nombre) {
         int nb = nombre;
@@ -296,24 +351,8 @@ public class ModeleJeu {
     public int[][] getGrille() {
         return grille;
     }
+    public State getState() {
+        return state;
+    }
 
 }
-
-//    private void afficheGrille() {
-//        System.out.println();
-//        for (int i = 0; i < tailleGrille; i++) {
-//            for (int j = 0; j < tailleGrille; j++) {
-//                System.out.print(grille[i][j] + "  ");
-//            }
-//            System.out.println();
-//        }
-//        System.out.println();
-//    }
-//    private void afficheListe() {
-//        System.out.println();
-//        for (Pair<Integer, Integer> integerIntegerPair : listeCaseVide) {
-//            System.out.print("[" + integerIntegerPair.first + ", "
-//                    + integerIntegerPair.second + "] -> ");
-//        }
-//        System.out.println();
-//    }

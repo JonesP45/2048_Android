@@ -1,18 +1,20 @@
 package fr.univ_orleans.a2048.fragments;
 
 import android.app.AlertDialog;
-import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import java.util.Objects;
@@ -20,33 +22,10 @@ import java.util.Objects;
 import fr.univ_orleans.a2048.modele.ModeleJeu;
 import fr.univ_orleans.a2048.R;
 
-public class JeuFragment extends Fragment implements View.OnClickListener {
-
-    private class WinDialogFragment extends DialogFragment {
-        @Override
-        public Dialog onCreateDialog(Bundle savedInstanceState) {
-            // Use the Builder class for convenient dialog construction
-            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setMessage("You win");
-//                    .setPositiveButton(R.string.fire, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            // FIRE ZE MISSILES!
-//                        }
-//                    })
-//                    .setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
-//                        public void onClick(DialogInterface dialog, int id) {
-//                            // User cancelled the dialog
-//                        }
-//                    });
-            // Create the AlertDialog object and return it
-            return builder.create();
-        }
-    }
+public class JeuFragment extends Fragment implements View.OnClickListener/*, WinDialogFragment.WinDialogListener*/ {
 
     private ModeleJeu mModele;
 
-    private Button mButtonUndo;
-    private Button mButtonRestart;
     private Button[][] mGridButtons;
 //    private Button mButton_0_0;
 //    private Button mButton_0_1;
@@ -64,6 +43,12 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
 //    private Button mButton_3_1;
 //    private Button mButton_3_2;
 //    private Button mButton_3_3;
+//    private Button mButtonUndo;
+//    private Button mButtonRestart;
+    private Button mButtonScore;
+    private Button mButtonBestScore;
+
+    private Toast toast;
 
     public static JeuFragment newInstance() {
         return new JeuFragment();
@@ -74,11 +59,19 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.jeu_fragment, container, false);
+        toast = new Toast(getContext());
+        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setDuration(Toast.LENGTH_LONG);
+        toast.setView(view);
+
         mModele = ModeleJeu.newInstance(4);
-        mButtonUndo = view.findViewById(R.id.button_undo);
+        Button mButtonUndo = view.findViewById(R.id.button_undo);
         mButtonUndo.setOnClickListener(this);
-        mButtonRestart = view.findViewById(R.id.button_restart);
+        Button mButtonRestart = view.findViewById(R.id.button_restart);
         mButtonRestart.setOnClickListener(this);
+        mButtonScore = view.findViewById(R.id.button_score);
+        mButtonBestScore = view.findViewById(R.id.button_best_score);
+        mButtonBestScore.setText("0");
         Button mButton_0_0 = view.findViewById(R.id.button_0_0);
         Button mButton_0_1 = view.findViewById(R.id.button_0_1);
         Button mButton_0_2 = view.findViewById(R.id.button_0_2);
@@ -119,7 +112,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         // TODO: Use the ViewModel
-        updateTextButtons();
+        update();
     }
 
     @Override
@@ -134,22 +127,50 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
 
     public void move(ModeleJeu.Mouvement mouvement) {
         mModele.move(mouvement);
-        updateTextButtons();
-        if (gameWin()) {
-//            Toast.makeText(getContext(), "win", Toast.LENGTH_SHORT).show();
-//            WinDialogFragment winDialogFragment = new WinDialogFragment();
-//            winDialogFragment.show();
-//            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-//            builder.setMessage("You win")
-//                    .setTitle("Win");
-//            AlertDialog dialog = builder.create();
-//            dialog.show();
+        update();
+        Log.e(getClass().getSimpleName(), mModele.getState().toString());
+        if (gameWin() && mModele.getState() == ModeleJeu.State.WIN) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("You win!")
+                    .setMessage("Score: " + mButtonScore.getText().toString())
+                    .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+//                            setState();
+                        }
+                    })
+                    .setNegativeButton("Restart", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            restart();
+                        }
+                    });
+            AlertDialog alertDialog = builder.show();
         }
         else if (gameOver()) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("You lose!")
+                    .setMessage("Score: " + mButtonScore.getText().toString())
+                    .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
 
+                        }
+                    })
+                    .setNegativeButton("Restart", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            restart();
+                        }
+                    });
+            AlertDialog alertDialog = builder.show();
         }
 
     }
+
+//    private void setState() {
+//        mModele.setStateAlreadyWin();
+//    }
 
     private boolean gameWin() {
         return mModele.isWin();
@@ -159,16 +180,23 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         return mModele.isGameOver();
     }
 
-    public void undo() {
+    private void undo() {
         mModele.undo();
-        updateTextButtons();
+        update();
     }
 
     public void restart() {
         mModele.initialisation();
-        updateTextButtons();
+//        if (Integer.parseInt(mButtonScore.getText().toString()) > Integer.parseInt(mButtonBestScore.getText().toString())) {
+//            mButtonBestScore.setText(mButtonScore.getText());
+//        }
+        update();
     }
 
+    private void update() {
+        updateTextButtons();
+        updateScoreButton();
+    }
     private void updateTextButtons() {
         for (int i = 0; i < mModele.getTailleGrille(); i++) {
             for (int j = 0; j < mModele.getTailleGrille(); j++) {
@@ -181,7 +209,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
             }
         }
     }
-
     private Drawable updateBackgroundButtons(int valeur) {
         switch (valeur) {
             case 0:
@@ -210,6 +237,13 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
                 return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_2048);
             default:
                 return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_0);
+        }
+    }
+    private void updateScoreButton() {
+        String score = String.valueOf(mModele.getScore());
+        mButtonScore.setText(score);
+        if (Integer.parseInt(mButtonScore.getText().toString()) > Integer.parseInt(mButtonBestScore.getText().toString())) {
+            mButtonBestScore.setText(score);
         }
     }
 
