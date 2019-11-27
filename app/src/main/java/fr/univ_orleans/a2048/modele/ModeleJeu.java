@@ -11,7 +11,7 @@ public class ModeleJeu {
     }
 
     public enum State {
-        IN_GAME, WIN, ALREADY_WIN, LOSE,SAVE
+        IN_GAME, WIN, ALREADY_WIN, LOSE, SAVE
     }
 
     private State state;
@@ -19,6 +19,7 @@ public class ModeleJeu {
     private int[][] grilleN_1;
     private int tailleGrille;
     private int score;
+    private int scoreN_1;
     private ArrayList<Pair<Integer, Integer>> listeCaseVide;
     private boolean premierCoupFait = false;
     private boolean undoDejaFait = false;
@@ -37,6 +38,7 @@ public class ModeleJeu {
     public void initialisation() {
         state = State.IN_GAME;
         score = 0;
+        scoreN_1 = 0;
         listeCaseVide.clear();
         for (int i = 0; i < tailleGrille; i++) {
             for (int j = 0; j < tailleGrille; j++) {
@@ -242,6 +244,7 @@ public class ModeleJeu {
     public void undo() {
         if (premierCoupFait && !undoDejaFait) {
             undoDejaFait = true;
+            score = scoreN_1;
             for (int i = 0; i < tailleGrille; i++) {
                 for (int j = 0; j < tailleGrille; j++) {
                     grille[i][j] = grilleN_1[i][j];
@@ -260,7 +263,10 @@ public class ModeleJeu {
         }
     }
 
-    private void modifScore(int ajout) { score += ajout; }
+    private void modifScore(int ajout) {
+        scoreN_1 = score;
+        score += ajout;
+    }
 
     public boolean isWin() {
         if (state == State.WIN) {
