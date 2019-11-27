@@ -1,5 +1,6 @@
 package fr.univ_orleans.a2048.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -24,8 +25,6 @@ import fr.univ_orleans.a2048.R;
 import static android.content.Context.MODE_PRIVATE;
 
 public class JeuFragment extends Fragment implements View.OnClickListener/*, WinDialogFragment.WinDialogListener*/ {
-
-    public static final String EXTRA_SCORE="Score";
 
     private static final String PREFS_NAME="ScoreSharedPrefs";
     private static final String PREF_KEY_SCORE="score";
@@ -105,31 +104,28 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         mGridButtons[3][1] = mButton_3_1;
         mGridButtons[3][2] = mButton_3_2;
         mGridButtons[3][3] = mButton_3_3;
-//        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-//        mButtonBestScore.setText(prefs.getString(PREF_KEY_SCORE, "0"));
-//        Log.e(getClass().getSimpleName(), prefs.getString(PREF_KEY_SCORE, "0"));
         return view;
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        // TODO: Use the ViewModel
         update();
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         mButtonBestScore.setText(prefs.getString(PREF_KEY_SCORE, "0"));
         Log.e(getClass().getSimpleName(), prefs.getString(PREF_KEY_SCORE, "0"));
     }
 
+    @SuppressLint("ApplySharedPref")
     @Override
     public void onPause() {
         String score = mButtonBestScore.getText().toString();
-        SharedPreferences prefs = getActivity().getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
+        SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
         editor.putString(PREF_KEY_SCORE, score);
         editor.commit(); // Meme si Anroid Studio dit le contraire, préférer quand même commit a apply...
@@ -153,7 +149,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         Log.e(getClass().getSimpleName(), mModele.getState().toString());
         if (gameWin() && mModele.getState() == ModeleJeu.State.WIN) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("You win!")
+            builder.setTitle("You won!")
                     .setMessage("Score: " + mButtonScore.getText().toString())
                     .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                         @Override
@@ -167,11 +163,12 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
                             restart();
                         }
                     });
-            AlertDialog alertDialog = builder.show();
+            builder.show();
+//            AlertDialog alertDialog = builder.show();
         }
         else if (gameOver() && mModele.getState() == ModeleJeu.State.LOSE) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-            builder.setTitle("You lose!")
+            builder.setTitle("You lost!")
                     .setMessage("Score: " + mButtonScore.getText().toString())
                     .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                         @Override
@@ -185,7 +182,8 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
                             restart();
                         }
                     });
-            AlertDialog alertDialog = builder.show();
+            builder.show();
+//            AlertDialog alertDialog = builder.show();
         }
 
     }
@@ -203,11 +201,8 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         update();
     }
 
-    public void restart() {
+    private void restart() {
         mModele.initialisation();
-//        if (Integer.parseInt(mButtonScore.getText().toString()) > Integer.parseInt(mButtonBestScore.getText().toString())) {
-//            mButtonBestScore.setText(mButtonScore.getText());
-//        }
         update();
     }
 
@@ -229,8 +224,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
     }
     private Drawable updateBackgroundButtons(int valeur) {
         switch (valeur) {
-            case 0:
-                return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_0);
             case 2:
                 return ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_2);
             case 4:
