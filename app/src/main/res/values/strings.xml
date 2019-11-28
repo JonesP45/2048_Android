@@ -7,4 +7,15 @@
     <string name="title_activity_test">test</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+
+    <string name="undo">undo</string>
+    <string name="restart">restart</string>
+    <string name="title2048">2048</string>
+    <string name="explication1">Join the numbers and get to the </string>
+    <string name="explication2">2048 tile!</string>
+
+    <string name="play">Reprendre le jeu</string>
+    <string name="new_game">Nouveau jeu</string>
+    <string name="best_score">Meilleur score</string>
+
 </resources>
