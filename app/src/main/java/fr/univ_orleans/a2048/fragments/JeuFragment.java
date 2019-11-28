@@ -26,11 +26,19 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class JeuFragment extends Fragment implements View.OnClickListener/*, WinDialogFragment.WinDialogListener*/ {
 
-    private static final String PREFS_NAME="ScoreSharedPrefs";
-    private static final String PREF_KEY_SCORE="score";
+    private static final String PREFS_NAME = "ScoreSharedPrefs";
+    private static final String PREF_KEY_SCORE = "score";
+    private static final String PREF_KEY_BEST_SCORE = "best_score";
+    private static final String PREF_KEY_STATE = "state";
+    private static final String PREF_KEY_MODEL = "model";
+    private static final String DEF_VALUE_SCORE = "0";
+    private static final String DEF_VALUE_BEST_SCORE = "0";
+    private static final String DEF_VALUE_STATE = ModeleJeu.State.IN_GAME.toString();
+    private static final String DEF_VALUE_MODEL = "0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0";
 
 
     private ModeleJeu mModele;
+    private int taille = 4;
 
     private Button[][] mGridButtons;
 //    private Button mButton_0_0;
@@ -63,7 +71,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.jeu_fragment, container, false);
-        mModele = ModeleJeu.newInstance(4);
+        mModele = ModeleJeu.newInstance(taille);
         Button mButtonUndo = view.findViewById(R.id.button_undo);
         mButtonUndo.setOnClickListener(this);
         Button mButtonRestart = view.findViewById(R.id.button_restart);
@@ -116,20 +124,13 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
     @Override
     public void onResume() {
         super.onResume();
-        SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        mButtonBestScore.setText(prefs.getString(PREF_KEY_SCORE, "0"));
-        Log.e(getClass().getSimpleName(), prefs.getString(PREF_KEY_SCORE, "0"));
+        load();
     }
 
     @SuppressLint("ApplySharedPref")
     @Override
     public void onPause() {
-        String score = mButtonBestScore.getText().toString();
-        SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME,MODE_PRIVATE);
-        SharedPreferences.Editor editor = prefs.edit();
-        editor.putString(PREF_KEY_SCORE, score);
-        editor.commit(); // Meme si Anroid Studio dit le contraire, préférer quand même commit a apply...
-
+        save();
         super.onPause();
     }
 
@@ -141,6 +142,30 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         if (v.getId() == R.id.button_restart) {
             restart();
         }
+    }
+
+    private void save() {
+        String score = String.valueOf(mModele.getScore());
+        String bestScore = mButtonBestScore.getText().toString();
+        String model = modelToString(mModele.getGrille());
+        String state = mModele.getState().toString();
+
+        SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editorSore = prefs.edit();
+        editorSore.putString(PREF_KEY_SCORE, score);
+        editorSore.putString(PREF_KEY_BEST_SCORE, bestScore);
+        editorSore.putString(PREF_KEY_MODEL, model);
+        editorSore.putString(PREF_KEY_STATE, state);
+        editorSore.commit(); // Meme si Anroid Studio dit le contraire, préférer quand même commit a apply...
+    }
+    private void load() {
+        SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        mButtonBestScore.setText(prefs.getString(PREF_KEY_BEST_SCORE, DEF_VALUE_BEST_SCORE));
+
+        int score = Integer.parseInt(prefs.getString(PREF_KEY_SCORE, DEF_VALUE_SCORE));
+        ModeleJeu.State state = ModeleJeu.State.valueOf(prefs.getString(PREF_KEY_STATE, DEF_VALUE_STATE));
+        int[][] grille = stringToModel(prefs.getString(PREF_KEY_MODEL, DEF_VALUE_MODEL));
+        mModele.load(score, state, grille);
     }
 
     public void move(ModeleJeu.Mouvement mouvement) {
@@ -191,7 +216,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
     private boolean gameWin() {
         return mModele.isWin();
     }
-
     private boolean gameOver() {
         return mModele.isGameOver();
     }
@@ -200,7 +224,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         mModele.undo();
         update();
     }
-
     private void restart() {
         mModele.initialisation();
         update();
@@ -256,6 +279,35 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         if (Integer.parseInt(mButtonScore.getText().toString()) > Integer.parseInt(mButtonBestScore.getText().toString())) {
             mButtonBestScore.setText(score);
         }
+    }
+
+    private String modelToString(int[][] model) {
+        StringBuilder str = new StringBuilder();
+        for (int i = 0; i < model.length; i++) {
+            for (int j = 0; j < model[0].length; j++) {
+                str.append(model[i][j]);
+                str.append("-");
+            }
+        }
+        return str.toString();
+    }
+    private int[][] stringToModel(String model) {
+        int[][] grille = new int[taille][taille];
+        int i = 0, j = 0;
+        StringBuilder str = new StringBuilder();
+        for (int c = 0; c < model.length(); c++) {
+            if (model.charAt(c) != '-') {
+                str.append(model.charAt(c));
+            } else  {
+                grille[i][j] = Integer.parseInt(str.toString());
+                j++;
+                if (j % taille == 0) {
+                    i++;
+                    j = 0;
+                }
+            }
+        }
+        return grille;
     }
 
 }

@@ -23,6 +23,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
 
     // 1 - Declare our interface that will be implemented by any container activity
     public interface OnButtonClickedListener {
+        void onPlayButtonClicked(View view);
         void onNewGameButtonClicked(View view);
         void onScoreButtonClicked(View view);
     }

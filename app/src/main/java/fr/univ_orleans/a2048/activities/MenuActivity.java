@@ -27,6 +27,12 @@ public class MenuActivity extends AppCompatActivity implements MenuFragment.OnBu
     // CallBack
     // --------------
 
+
+    @Override
+    public void onPlayButtonClicked(View view) {
+
+    }
+
     @Override
     public void onNewGameButtonClicked(View view) {
         Log.e(getClass().getSimpleName(),"Button clicked !");

@@ -11,7 +11,7 @@ public class ModeleJeu {
     }
 
     public enum State {
-        IN_GAME, WIN, ALREADY_WIN, LOSE, SAVE
+        IN_GAME, WIN, ALREADY_WIN, LOSE
     }
 
     private State state;
@@ -49,6 +49,12 @@ public class ModeleJeu {
         }
         generationAleatoire(2); //deux chiffres 2 généré aléatoirement au début
         generationAleatoire(2);
+    }
+
+    public void load(int score, State state, int[][] grille) {
+        this.score = score;
+        this.state = state;
+        this.grille = grille;
     }
 
 //    public boolean move(Mouvement movement) {
