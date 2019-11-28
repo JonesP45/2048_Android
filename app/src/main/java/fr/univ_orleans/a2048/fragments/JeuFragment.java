@@ -24,7 +24,7 @@ import fr.univ_orleans.a2048.R;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class JeuFragment extends Fragment implements View.OnClickListener/*, WinDialogFragment.WinDialogListener*/ {
+public class JeuFragment extends Fragment implements View.OnClickListener {
 
     private static final String PREFS_NAME = "ScoreSharedPrefs";
     private static final String PREF_KEY_SCORE = "score";

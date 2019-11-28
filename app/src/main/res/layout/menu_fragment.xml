@@ -9,6 +9,8 @@
     android:orientation="vertical"
     android:background="@color/bkColor">
 
+
+
 <!--    <Button-->
 <!--        android:id="@+id/fragment_menu_bouton_reprendre_jeu"-->
 <!--        android:layout_width="wrap_content"-->
