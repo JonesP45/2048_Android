@@ -34,7 +34,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
     private static final String DEF_VALUE_SCORE = "0";
     private static final String DEF_VALUE_BEST_SCORE = "0";
     private static final String DEF_VALUE_STATE = ModeleJeu.State.IN_GAME.toString();
-    private static final String DEF_VALUE_MODEL = "0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0-0";
+    private static String DEF_VALUE_MODEL;
 
 
     private ModeleJeu mModele;
@@ -72,6 +72,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
                              @Nullable Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.jeu_fragment, container, false);
         mModele = ModeleJeu.newInstance(taille);
+        DEF_VALUE_MODEL = modelToString(mModele.getGrille());
         Button mButtonUndo = view.findViewById(R.id.button_undo);
         mButtonUndo.setOnClickListener(this);
         Button mButtonRestart = view.findViewById(R.id.button_restart);
@@ -166,6 +167,8 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         ModeleJeu.State state = ModeleJeu.State.valueOf(prefs.getString(PREF_KEY_STATE, DEF_VALUE_STATE));
         int[][] grille = stringToModel(prefs.getString(PREF_KEY_MODEL, DEF_VALUE_MODEL));
         mModele.load(score, state, grille);
+
+        update();
     }
 
     public void move(ModeleJeu.Mouvement mouvement) {
@@ -296,10 +299,14 @@ public class JeuFragment extends Fragment implements View.OnClickListener/*, Win
         int i = 0, j = 0;
         StringBuilder str = new StringBuilder();
         for (int c = 0; c < model.length(); c++) {
+            Log.e(getClass().getSimpleName(), "str = " + str.toString() + ", c = " + model.charAt(c) + ", i = " + i + ", j = " + j);
             if (model.charAt(c) != '-') {
+                Log.e(getClass().getSimpleName(), "if");
                 str.append(model.charAt(c));
-            } else  {
+            } else {
+                Log.e(getClass().getSimpleName(), "else");
                 grille[i][j] = Integer.parseInt(str.toString());
+                str = new StringBuilder();
                 j++;
                 if (j % taille == 0) {
                     i++;
