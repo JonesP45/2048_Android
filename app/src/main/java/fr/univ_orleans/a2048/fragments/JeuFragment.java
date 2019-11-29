@@ -218,15 +218,15 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
     }
     private void animation(){
-        Animation zoom = AnimationUtils.loadAnimation(this.getContext(),R.anim.zoom);
-        for(int i = 0; i< mModele.getTailleGrille(); i++){
-            for(int j= 0; j<mModele.getTailleGrille();j++){
+        Animation zoom = AnimationUtils.loadAnimation(getContext(), R.anim.zoom);
+        for (int i = 0; i < mModele.getTailleGrille(); i++){
+            for (int j= 0; j < mModele.getTailleGrille(); j++){
                 Button bout = mGridButtons[i][j];
                 String valBoutS = bout.getText().toString();
-                int valBout = valBoutS.equals("")?0:Integer.parseInt(valBoutS);
-                System.out.println(valBout);
+                int valBout = valBoutS.equals("") ? 0 : Integer.parseInt(valBoutS);
+//                System.out.println(valBout);
                 int valCell = mModele.getGrille()[i][j];
-                if((valBout * 2) == valCell && valBout!=0){
+                if((valBout * 2) == valCell && valBout != 0){
                     bout.startAnimation(zoom);
                 }
             }
