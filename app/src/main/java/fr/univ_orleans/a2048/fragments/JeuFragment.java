@@ -50,24 +50,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
 
     private SquareLayout mSquareLayout;
     private Button[][] mGridButtons;
-//    private Button mButton_0_0;
-//    private Button mButton_0_1;
-//    private Button mButton_0_2;
-//    private Button mButton_0_3;
-//    private Button mButton_1_0;
-//    private Button mButton_1_1;
-//    private Button mButton_1_2;
-//    private Button mButton_1_3;
-//    private Button mButton_2_0;
-//    private Button mButton_2_1;
-//    private Button mButton_2_2;
-//    private Button mButton_2_3;
-//    private Button mButton_3_0;
-//    private Button mButton_3_1;
-//    private Button mButton_3_2;
-//    private Button mButton_3_3;
-//    private Button mButtonUndo;
-//    private Button mButtonRestart;
     private Button mButtonScore;
     private Button mButtonBestScore;
 
@@ -82,11 +64,11 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         final View view = inflater.inflate(R.layout.jeu_fragment, container, false);
         SharedPreferences prefsSelect = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME_SELECT_TAILLE, MODE_PRIVATE);
         taille = Integer.parseInt(prefsSelect.getString(PREF_KEY_TAILLE, DEF_VALUE_TAILLE));
-        PREFS_NAME_MODEL = "ModelGrille" + String.valueOf(taille) + "SharedPrefs";
+        PREFS_NAME_MODEL = "ModelGrille" + taille + "SharedPrefs";
 
         mModele = ModeleJeu.newInstance(taille);
         DEF_VALUE_MODEL = modelToString(mModele.getGrille());
-        Log.e(getClass().getSimpleName(), DEF_VALUE_MODEL);
+//        Log.e(getClass().getSimpleName(), DEF_VALUE_MODEL);
 
         mSquareLayout = view.findViewById(R.id.grille);
         Button mButtonUndo = view.findViewById(R.id.button_undo);
@@ -96,47 +78,12 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         mButtonScore = view.findViewById(R.id.button_score);
         mButtonBestScore = view.findViewById(R.id.button_best_score);
         mButtonBestScore.setText("0");
-//        Button mButton_0_0 = view.findViewById(R.id.button_0_0);
-//        Button mButton_0_1 = view.findViewById(R.id.button_0_1);
-//        Button mButton_0_2 = view.findViewById(R.id.button_0_2);
-//        Button mButton_0_3 = view.findViewById(R.id.button_0_3);
-//        Button mButton_1_0 = view.findViewById(R.id.button_1_0);
-//        Button mButton_1_1 = view.findViewById(R.id.button_1_1);
-//        Button mButton_1_2 = view.findViewById(R.id.button_1_2);
-//        Button mButton_1_3 = view.findViewById(R.id.button_1_3);
-//        Button mButton_2_0 = view.findViewById(R.id.button_2_0);
-//        Button mButton_2_1 = view.findViewById(R.id.button_2_1);
-//        Button mButton_2_2 = view.findViewById(R.id.button_2_2);
-//        Button mButton_2_3 = view.findViewById(R.id.button_2_3);
-//        Button mButton_3_0 = view.findViewById(R.id.button_3_0);
-//        Button mButton_3_1 = view.findViewById(R.id.button_3_1);
-//        Button mButton_3_2 = view.findViewById(R.id.button_3_2);
-//        Button mButton_3_3 = view.findViewById(R.id.button_3_3);
-        mGridButtons = new Button[mModele.getTailleGrille()][mModele.getTailleGrille()];
-//        mGridButtons[0][0] = mButton_0_0;
-//        mGridButtons[0][1] = mButton_0_1;
-//        mGridButtons[0][2] = mButton_0_2;
-//        mGridButtons[0][3] = mButton_0_3;
-//        mGridButtons[1][0] = mButton_1_0;
-//        mGridButtons[1][1] = mButton_1_1;
-//        mGridButtons[1][2] = mButton_1_2;
-//        mGridButtons[1][3] = mButton_1_3;
-//        mGridButtons[2][0] = mButton_2_0;
-//        mGridButtons[2][1] = mButton_2_1;
-//        mGridButtons[2][2] = mButton_2_2;
-//        mGridButtons[2][3] = mButton_2_3;
-//        mGridButtons[3][0] = mButton_3_0;
-//        mGridButtons[3][1] = mButton_3_1;
-//        mGridButtons[3][2] = mButton_3_2;
-//        mGridButtons[3][3] = mButton_3_3;
-        setGrille();
-        return view;
-    }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        mGridButtons = new Button[mModele.getTailleGrille()][mModele.getTailleGrille()];
+
+        setGrille();
         update();
+        return view;
     }
 
     @Override
@@ -162,6 +109,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    @SuppressLint("ApplySharedPref")
     private void save() {
         String score = String.valueOf(mModele.getScore());
         String bestScore = mButtonBestScore.getText().toString();
@@ -189,7 +137,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
     public void move(ModeleJeu.Mouvement mouvement) {
         mModele.move(mouvement);
         update();
-        Log.e(getClass().getSimpleName(), mModele.getState().toString());
+//        Log.e(getClass().getSimpleName(), mModele.getState().toString());
         if (gameWin() && mModele.getState() == ModeleJeu.State.WIN) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("You won!")
@@ -207,7 +155,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
                         }
                     });
             builder.show();
-//            AlertDialog alertDialog = builder.show();
         }
         else if (gameOver() && mModele.getState() == ModeleJeu.State.LOSE) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -226,9 +173,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
                         }
                     });
             builder.show();
-//            AlertDialog alertDialog = builder.show();
         }
-
     }
 
     private boolean gameWin() {
@@ -310,17 +255,17 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         return str.toString();
     }
     private int[][] stringToModel(String model) {
-        Log.e(getClass().getSimpleName(), model);
+//        Log.e(getClass().getSimpleName(), model);
         int[][] grille = new int[taille][taille];
         int i = 0, j = 0;
         StringBuilder str = new StringBuilder();
         for (int c = 0; c < model.length(); c++) {
-            Log.e(getClass().getSimpleName(), "str = " + str.toString() + ", c = " + model.charAt(c) + ", i = " + i + ", j = " + j);
+//            Log.e(getClass().getSimpleName(), "str = " + str.toString() + ", c = " + model.charAt(c) + ", i = " + i + ", j = " + j);
             if (model.charAt(c) != '-') {
-                Log.e(getClass().getSimpleName(), "if");
+//                Log.e(getClass().getSimpleName(), "if");
                 str.append(model.charAt(c));
             } else {
-                Log.e(getClass().getSimpleName(), "else");
+//                Log.e(getClass().getSimpleName(), "else");
                 grille[i][j] = Integer.parseInt(str.toString());
                 str = new StringBuilder();
                 j++;

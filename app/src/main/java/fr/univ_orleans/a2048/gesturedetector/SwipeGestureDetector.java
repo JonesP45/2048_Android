@@ -24,7 +24,7 @@ public class SwipeGestureDetector extends GestureDetector.SimpleOnGestureListene
     @Override
     //gère les swipes
     public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-        Log.i("DEBUG", e1 + " - " + e2);
+//        Log.i("DEBUG", e1 + " - " + e2);
 
         float deltaX = e2.getX() - e1.getX();
         float deltaY = e2.getY() - e1.getY();

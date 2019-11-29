@@ -2,8 +2,6 @@ package fr.univ_orleans.a2048.layouts;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 
 import androidx.appcompat.widget.AppCompatButton;
 
@@ -31,28 +29,6 @@ public class SquareButton extends AppCompatButton {
         super.onMeasure(
                 MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY),
                 MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY));
-    }
-
-    private void init() {
-        this.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-            @Override
-            public boolean onPreDraw() {
-
-                if (getWidth() != getHeight()) {
-                    //Get the smaller dimension of height and width
-                    int squareSize = Math.min(getWidth(), getHeight());
-
-                    //Set the dimensions to a Square
-                    ViewGroup.LayoutParams lp = getLayoutParams();
-                    lp.width = squareSize;
-                    lp.height = squareSize;
-                    requestLayout();
-                    return false;
-                }
-                return true;
-
-            }
-        });
     }
 
 }

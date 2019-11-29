@@ -24,7 +24,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     // 1 - Declare our interface that will be implemented by any container activity
     public interface OnButtonClickedListener {
         void onPlayButtonClicked(View view);
-//        void onNewGameButtonClicked(View view);
         void onScoreButtonClicked(View view);
     }
 
@@ -43,9 +42,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                     .commitNow();
         }
 
-        //Set onClickListener to button "SHOW ME DETAILS"
-//        result.findViewById(R.id.fragment_menu_bouton_reprendre_jeu).setOnClickListener(this);
-//        result.findViewById(R.id.fragment_menu_bouton_nouveau_jeu).setOnClickListener(this);
         result.findViewById(R.id.fragment_menu_bouton_jouer).setOnClickListener(this);
         result.findViewById(R.id.fragment_menu_bouton_meilleur_score).setOnClickListener(this);
 
@@ -73,12 +69,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         // 5 - Spread the click to the parent activity
         switch (v.getId()) {
-//            case R.id.fragment_menu_bouton_reprendre_jeu:
-//                mCallback.onPlayButtonClicked(v);
-//                break;
-//            case R.id.fragment_menu_bouton_nouveau_jeu:
-//                mCallback.onNewGameButtonClicked(v);
-//                break;
             case R.id.fragment_menu_bouton_jouer:
                 mCallback.onPlayButtonClicked(v);
                 break;

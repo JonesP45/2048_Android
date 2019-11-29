@@ -59,7 +59,6 @@ public class ModeleJeu {
 
 //    public boolean move(Mouvement movement) {
     public void move(Mouvement movement) {
-//        if (state == State.LOSE) return false;
         if (state == State.LOSE) return;
         if (!premierCoupFait) premierCoupFait = true;
         for (int i = 0; i < tailleGrille; i++) {
@@ -82,7 +81,6 @@ public class ModeleJeu {
             generationAleatoire(0);
             undoDejaFait = false;
         }
-//        return changementDansGrille;
     }
     private boolean moveDroite() {
         boolean movement = false;

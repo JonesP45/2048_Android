@@ -30,8 +30,6 @@ public class SelectionGrilleFragment extends Fragment implements View.OnClickLis
 
     private int taille;
     private SquareLayout mSquareLayout;
-//    private Button mButtonLess;
-//    private Button mButtonMore;
 
     public static SelectionGrilleFragment newInstance() {
         return new SelectionGrilleFragment();
@@ -62,6 +60,7 @@ public class SelectionGrilleFragment extends Fragment implements View.OnClickLis
         super.onPause();
     }
 
+    @SuppressLint("ApplySharedPref")
     private void save() {
         String taille = String.valueOf(this.taille);
         SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME, MODE_PRIVATE);

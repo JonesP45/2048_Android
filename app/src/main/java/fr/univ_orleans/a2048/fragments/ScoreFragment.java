@@ -24,10 +24,6 @@ public class ScoreFragment extends Fragment {
         return inflater.inflate(R.layout.score_fragment, container, false);
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        // TODO: Use the ViewModel
-    }
+
 
 }
