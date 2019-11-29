@@ -45,7 +45,6 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
                     .commitNow();
         }
 
-        
 
         result.findViewById(R.id.fragment_menu_bouton_jouer).setOnClickListener(this);
         result.findViewById(R.id.fragment_menu_bouton_meilleur_score).setOnClickListener(this);
