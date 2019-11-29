@@ -196,201 +196,201 @@
         android:background="@drawable/border_square_layout"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5"
-            android:orientation="horizontal">
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="5"-->
+<!--            android:orientation="horizontal">-->
 
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_0_0"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_0_0"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
 
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_0_1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_0_2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_0_3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-        </LinearLayout>
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_0_1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5">
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_0_2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
 
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_1_0"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_0_3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
 
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_1_1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
+<!--        </LinearLayout>-->
 
 
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_1_3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="5">-->
 
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5">
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_2_0"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_2_1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_2_2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_2_3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-        </LinearLayout>
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_1_0"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="5">
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_1_1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
 
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_3_0"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
-
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_3_1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_1_2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
 
 
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_3_2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_1_3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
 
-            <fr.univ_orleans.a2048.layouts.SquareButton
-                android:id="@+id/button_3_3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_margin="0.025in"
-                android:layout_weight="5"
-                android:background="@drawable/border_square_button_0"
-                android:clickable="false"
-                android:contextClickable="false" />
+<!--        </LinearLayout>-->
 
-        </LinearLayout>
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="5">-->
+
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_2_0"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
+
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_2_1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
+
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_2_2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
+
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_2_3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
+
+<!--        </LinearLayout>-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_weight="5">-->
+
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_3_0"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
+
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_3_1"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
+
+
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_3_2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
+
+<!--            <fr.univ_orleans.a2048.layouts.SquareButton-->
+<!--                android:id="@+id/button_3_3"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="0.025in"-->
+<!--                android:layout_weight="5"-->
+<!--                android:background="@drawable/border_square_button_0"-->
+<!--                android:clickable="false"-->
+<!--                android:contextClickable="false" />-->
+
+<!--        </LinearLayout>-->
 
     </fr.univ_orleans.a2048.layouts.SquareLayout>
 
