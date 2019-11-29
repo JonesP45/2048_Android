@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,11 +37,15 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         //Inflate the layout of MainFragment
         View result = inflater.inflate(R.layout.menu_fragment, container, false);
 
+        FrameLayout frameLayout = result.findViewById(R.id.container);
+
         if (savedInstanceState == null) {
             getChildFragmentManager().beginTransaction()
-                    .replace(R.id.container, SelectionGrilleFragment.newInstance())
+                    .replace(frameLayout.getId(), SelectionGrilleFragment.newInstance())
                     .commitNow();
         }
+
+        
 
         result.findViewById(R.id.fragment_menu_bouton_jouer).setOnClickListener(this);
         result.findViewById(R.id.fragment_menu_bouton_meilleur_score).setOnClickListener(this);
