@@ -9,7 +9,14 @@
     android:orientation="vertical"
     android:background="@color/bkColor">
 
-
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_margin="0.25in">
+    </FrameLayout>
 
 <!--    <Button-->
 <!--        android:id="@+id/fragment_menu_bouton_reprendre_jeu"-->

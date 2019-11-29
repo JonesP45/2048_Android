@@ -37,6 +37,12 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
         //Inflate the layout of MainFragment
         View result = inflater.inflate(R.layout.menu_fragment, container, false);
 
+        if (savedInstanceState == null) {
+            getChildFragmentManager().beginTransaction()
+                    .replace(R.id.container, SelectionGrilleFragment.newInstance())
+                    .commitNow();
+        }
+
         //Set onClickListener to button "SHOW ME DETAILS"
 //        result.findViewById(R.id.fragment_menu_bouton_reprendre_jeu).setOnClickListener(this);
 //        result.findViewById(R.id.fragment_menu_bouton_nouveau_jeu).setOnClickListener(this);
