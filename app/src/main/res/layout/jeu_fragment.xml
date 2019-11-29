@@ -18,7 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="0.05in">
 
         <Button
             android:layout_width="wrap_content"
@@ -27,7 +28,8 @@
             android:text="@string/title2048"
             android:textSize="45sp"
             android:background="@drawable/border_button_title"
-            tools:ignore="NestedWeights" />
+            tools:ignore="NestedWeights"
+            android:layout_margin="0.025in"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,12 +50,13 @@
                 android:clickable="false"
                 android:contextClickable="false"
                 android:text=""
-                android:background="@drawable/border_square_button_0"/>
+                android:background="@drawable/border_square_button_0"
+                android:layout_margin="0.025in"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1" />-->
 
             <Button
                 android:id="@+id/button_undo"
@@ -61,7 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="@string/undo"
-                android:background="@drawable/border_button_title"/>
+                android:background="@drawable/border_button_title"
+                android:layout_margin="0.025in"/>
 
         </LinearLayout>
 
@@ -78,13 +82,13 @@
                 android:layout_weight="2"
                 android:clickable="false"
                 android:contextClickable="false"
-                android:text=""
-                android:background="@drawable/border_square_button_0"/>
+                android:background="@drawable/border_square_button_0"
+                android:layout_margin="0.025in"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="2" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1" />-->
 
             <Button
                 android:id="@+id/button_restart"
@@ -92,7 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2"
                 android:text="@string/restart"
-                android:background="@drawable/border_button_title"/>
+                android:background="@drawable/border_button_title"
+                android:layout_margin="0.025in"/>
 
         </LinearLayout>
 

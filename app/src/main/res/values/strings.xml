@@ -11,7 +11,7 @@
     <string name="undo">undo</string>
     <string name="restart">restart</string>
     <string name="title2048">2048</string>
-    <string name="explication1">Join the numbers and get to the </string>
+    <string name="explication1">Join the numbers and get to the</string>
     <string name="explication2">2048 tile!</string>
 
     <string name="play"> Commencer le jeu </string>

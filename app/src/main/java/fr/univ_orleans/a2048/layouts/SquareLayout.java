@@ -23,19 +23,19 @@ public class SquareLayout extends LinearLayout {
         super(context, attrs, defStyleAttr);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public SquareLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+//    public SquareLayout(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+//        super(context, attrs, defStyleAttr, defStyleRes);
+//    }
 
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec){
-        super.onMeasure(widthMeasureSpec,heightMeasureSpec);
-        int size = Math.min(getMeasuredHeight(),getMeasuredWidth());
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int size = Math.min(getMeasuredHeight(), getMeasuredWidth());
 
         super.onMeasure(
-                MeasureSpec.makeMeasureSpec(size,MeasureSpec.EXACTLY),
-                MeasureSpec.makeMeasureSpec(size,MeasureSpec.EXACTLY));
+                MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY),
+                MeasureSpec.makeMeasureSpec(size, MeasureSpec.EXACTLY));
 
         init();
     }
