@@ -24,14 +24,14 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class SelectionGrilleFragment extends Fragment implements View.OnClickListener {
 
-    private static final String PREFS_NAME = "ScoreSharedPrefs";
+    private static final String PREFS_NAME = "SelectTailleSharedPrefs";
     private static final String PREF_KEY_TAILLE = "taille";
     private static final String DEF_VALUE_TAILLE = "4";
 
     private int taille;
     private SquareLayout mSquareLayout;
-    private Button mButtonLess;
-    private Button mButtonMore;
+//    private Button mButtonLess;
+//    private Button mButtonMore;
 
     public static SelectionGrilleFragment newInstance() {
         return new SelectionGrilleFragment();
@@ -42,9 +42,9 @@ public class SelectionGrilleFragment extends Fragment implements View.OnClickLis
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.selection_grille_fragment, container, false);
         mSquareLayout = view.findViewById(R.id.grille);
-        mButtonLess = view.findViewById(R.id.button_less);
+        Button mButtonLess = view.findViewById(R.id.button_less);
         mButtonLess.setOnClickListener(this);
-        mButtonMore = view.findViewById(R.id.button_more);
+        Button mButtonMore = view.findViewById(R.id.button_more);
         mButtonMore.setOnClickListener(this);
         return view;
     }
