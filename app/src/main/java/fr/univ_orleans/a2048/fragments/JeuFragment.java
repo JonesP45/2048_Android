@@ -11,6 +11,8 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -22,6 +24,7 @@ import androidx.fragment.app.Fragment;
 import java.util.Objects;
 import java.util.Random;
 
+import fr.univ_orleans.a2048.layouts.SquareButton;
 import fr.univ_orleans.a2048.layouts.SquareLayout;
 import fr.univ_orleans.a2048.modele.ModeleJeu;
 import fr.univ_orleans.a2048.R;
@@ -43,6 +46,9 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
     private static final String PREFS_NAME_SELECT_TAILLE = "SelectTailleSharedPrefs";
     private static final String PREF_KEY_TAILLE = "taille";
     private static final String DEF_VALUE_TAILLE = "4";
+
+    private static final boolean MOUVEMENT = true;
+    private static final boolean NON_MOUVEMENT = false;
 
 
     private ModeleJeu mModele;
@@ -82,7 +88,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         mGridButtons = new Button[mModele.getTailleGrille()][mModele.getTailleGrille()];
 
         setGrille();
-        update();
+        update(NON_MOUVEMENT);
         return view;
     }
 
@@ -131,12 +137,12 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         ModeleJeu.State state = ModeleJeu.State.valueOf(prefsModel.getString(PREF_KEY_STATE, DEF_VALUE_STATE));
         int[][] grille = stringToModel(prefsModel.getString(PREF_KEY_MODEL, DEF_VALUE_MODEL));
         mModele.load(score, state, grille);
-        update();
+        update(NON_MOUVEMENT);
     }
 
     public void move(ModeleJeu.Mouvement mouvement) {
         mModele.move(mouvement);
-        update();
+        update(MOUVEMENT);
 //        Log.e(getClass().getSimpleName(), mModele.getState().toString());
         if (gameWin() && mModele.getState() == ModeleJeu.State.WIN) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -185,16 +191,19 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
 
     private void undo() {
         mModele.undo();
-        update();
+        update(NON_MOUVEMENT);
     }
     private void restart() {
         mModele.initialisation();
-        update();
+        update(NON_MOUVEMENT);
     }
 
-    private void update() {
+    private void update(boolean action) {
+        if(action)
+            animation();
         updateTextButtons();
         updateScoreButton();
+
     }
     private void updateTextButtons() {
         for (int i = 0; i < mModele.getTailleGrille(); i++) {
@@ -205,6 +214,21 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
                     mGridButtons[i][j].setText(String.valueOf(cellule));
                 }
                 mGridButtons[i][j].setBackground(updateBackgroundButtons(cellule));
+            }
+        }
+    }
+    private void animation(){
+        Animation zoom = AnimationUtils.loadAnimation(this.getContext(),R.anim.zoom);
+        for(int i = 0; i< mModele.getTailleGrille(); i++){
+            for(int j= 0; j<mModele.getTailleGrille();j++){
+                Button bout = mGridButtons[i][j];
+                String valBoutS = bout.getText().toString();
+                int valBout = valBoutS.equals("")?0:Integer.parseInt(valBoutS);
+                System.out.println(valBout);
+                int valCell = mModele.getGrille()[i][j];
+                if((valBout * 2) == valCell && valBout!=0){
+                    bout.startAnimation(zoom);
+                }
             }
         }
     }

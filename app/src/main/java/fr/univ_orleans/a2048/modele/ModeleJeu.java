@@ -282,7 +282,7 @@ public class ModeleJeu {
         else if (state == State.IN_GAME) {
             for (int i = 0; i < tailleGrille; i++) {
                 for (int j = 0; j < tailleGrille; j++) {
-                    if (grille[i][j] == 8) {
+                    if (grille[i][j] == 2048) {
                         state = State.WIN;
                         return true;
                     }
