@@ -16,9 +16,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I have no score to show you..."
-            android:textColor="#FFF"
-            android:textSize="20sp" />
+            android:text="Your best scores !!!"
+            android:textStyle="bold"
+            android:textColor="@color/bkSquareLayoutColor"
+            android:textSize="36sp" />
 
     </LinearLayout>
 
@@ -44,10 +45,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="3x3"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textAlignment="textStart"/>
+                android:textStyle="bold"
+                android:textAlignment="textStart"
+                />
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
@@ -59,9 +62,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="0"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textEnd"/>
         </LinearLayout>
 
@@ -95,9 +99,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="4x4"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textStart"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -110,9 +115,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="0"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textEnd"/>
         </LinearLayout>
 
@@ -147,9 +153,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="5x5"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textStart"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -162,9 +169,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="0"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textEnd"/>
         </LinearLayout>
 
@@ -198,9 +206,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="6x6"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textStart"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -213,9 +222,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="0"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textEnd"/>
         </LinearLayout>
 
@@ -249,9 +259,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="7x7"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textStart"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -264,9 +275,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="0"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textEnd"/>
         </LinearLayout>
 
@@ -300,9 +312,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="8x8"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textStart"/>
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -315,9 +328,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="0"
-                android:textColor="#FFF"
-                android:textSize="20sp"
+                android:textColor="@color/bkSquareLayoutColor"
+                android:textSize="30sp"
                 android:layout_weight="1"
+                android:textStyle="bold"
                 android:textAlignment="textEnd"/>
         </LinearLayout>
 
@@ -353,8 +367,8 @@
 <!--            android:layout_width="wrap_content"-->
 <!--            android:layout_height="wrap_content"-->
 <!--            android:text="I have no score to show you..."-->
-<!--            android:textColor="#FFF"-->
-<!--            android:textSize="20sp" />-->
+<!--            android:textColor="@color/bkSquareLayoutColor"-->
+<!--            android:textSize="30sp" />-->
 <!--    </LinearLayout>-->
 
 <!--    <LinearLayout-->
@@ -371,8 +385,8 @@
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:text="4x4"-->
-<!--                android:textColor="#FFF"-->
-<!--                android:textSize="20sp" />-->
+<!--                android:textColor="@color/bkSquareLayoutColor"-->
+<!--                android:textSize="30sp" />-->
 
 <!--        </LinearLayout>-->
 
@@ -386,8 +400,8 @@
 <!--                android:layout_width="wrap_content"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:text="15238"-->
-<!--                android:textColor="#FFF"-->
-<!--                android:textSize="20sp" />-->
+<!--                android:textColor="@color/bkSquareLayoutColor"-->
+<!--                android:textSize="30sp" />-->
 <!--        </LinearLayout>-->
 
 <!--    </LinearLayout>-->
