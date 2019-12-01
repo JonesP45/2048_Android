@@ -34,13 +34,21 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
 
     private static String PREFS_NAME_MODEL;
     private static final String PREF_KEY_SCORE = "score";
+    private static final String PREF_KEY_SCORE_N_1 = "scoreN_1";////////////////////////////////////
     private static final String PREF_KEY_BEST_SCORE = "best_score";
     private static final String PREF_KEY_STATE = "state";
     private static final String PREF_KEY_MODEL = "model";
+    private static final String PREF_KEY_MODEL_N_1 = "modelN_1";////////////////////////////////////
+    private static final String PREF_KEY_MODEL_PREMIER_COUP_FAIT = "premier_coup";//////////////////
+    private static final String PREF_KEY_MODEL_UNDO_DEJA_FAIT = "undo_deja_fait";///////////////////
     private static final String DEF_VALUE_SCORE = "0";
+    private static final String DEF_VALUE_SCORE_N_1 = "0";//////////////////////////////////////////
     private static final String DEF_VALUE_BEST_SCORE = "0";
     private static final String DEF_VALUE_STATE = ModeleJeu.State.IN_GAME.toString();
     private static String DEF_VALUE_MODEL;
+    private static String DEF_VALUE_MODEL_N_1;//////////////////////////////////////////////////////
+    private static final boolean DEF_VALUE_MODEL_PREMIER_COUP_FAIT = false;/////////////////////////
+    private static final boolean DEF_VALUE_MODEL_UNDO_DEJA_FAIT = false;////////////////////////////
 
     private static final String PREFS_NAME_SELECT_TAILLE = "SelectTailleSharedPrefs";
     private static final String PREF_KEY_TAILLE = "taille";
@@ -73,6 +81,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
 
         mModele = ModeleJeu.newInstance(taille);
         DEF_VALUE_MODEL = modelToString(mModele.getGrille());
+        DEF_VALUE_MODEL_N_1 = modelToString(mModele.getGrilleN_1());
 
         mSquareLayout = view.findViewById(R.id.grille);
         Button mButtonUndo = view.findViewById(R.id.button_undo);
@@ -116,25 +125,38 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
     @SuppressLint("ApplySharedPref")
     private void save() {
         String score = String.valueOf(mModele.getScore());
+        String scoreN_1 = String.valueOf(mModele.getScoreN_1());
         String bestScore = mButtonBestScore.getText().toString();
         String model = modelToString(mModele.getGrille());
+        String modelN_1 = modelToString(mModele.getGrilleN_1());
         String state = mModele.getState().toString();
+        boolean premierCoupFait = mModele.isPremierCoupFait();
+        boolean undoDejaFait = mModele.isUndoDejaFait();
 
         SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME_MODEL, MODE_PRIVATE);
         SharedPreferences.Editor editorSore = prefs.edit();
         editorSore.putString(PREF_KEY_SCORE, score);
+        editorSore.putString(PREF_KEY_SCORE_N_1, scoreN_1);
         editorSore.putString(PREF_KEY_BEST_SCORE, bestScore);
         editorSore.putString(PREF_KEY_MODEL, model);
+        editorSore.putString(PREF_KEY_MODEL_N_1, modelN_1);
         editorSore.putString(PREF_KEY_STATE, state);
+        editorSore.putBoolean(PREF_KEY_MODEL_PREMIER_COUP_FAIT, premierCoupFait);
+        editorSore.putBoolean(PREF_KEY_MODEL_UNDO_DEJA_FAIT, undoDejaFait);
         editorSore.commit(); // Meme si Android Studio dit le contraire, préférer quand même commit a apply...
     }
     private void load() {
         SharedPreferences prefsModel = Objects.requireNonNull(getActivity()).getSharedPreferences(PREFS_NAME_MODEL, MODE_PRIVATE);
         mButtonBestScore.setText(prefsModel.getString(PREF_KEY_BEST_SCORE, DEF_VALUE_BEST_SCORE));
         int score = Integer.parseInt(prefsModel.getString(PREF_KEY_SCORE, DEF_VALUE_SCORE));
+        int scoreN_1 = Integer.parseInt(prefsModel.getString(PREF_KEY_SCORE_N_1, DEF_VALUE_SCORE_N_1));
         ModeleJeu.State state = ModeleJeu.State.valueOf(prefsModel.getString(PREF_KEY_STATE, DEF_VALUE_STATE));
         Cellule[][] grille = stringToModel(prefsModel.getString(PREF_KEY_MODEL, DEF_VALUE_MODEL));
-        mModele.load(score, state, grille);
+        Cellule[][] grilleN_1 = stringToModel(prefsModel.getString(PREF_KEY_MODEL_N_1, DEF_VALUE_MODEL_N_1));
+        boolean premierCoupFait = prefsModel.getBoolean(PREF_KEY_MODEL_PREMIER_COUP_FAIT, DEF_VALUE_MODEL_PREMIER_COUP_FAIT);
+        boolean undoDejaFait = prefsModel.getBoolean(PREF_KEY_MODEL_UNDO_DEJA_FAIT, DEF_VALUE_MODEL_UNDO_DEJA_FAIT);
+
+        mModele.load(score, scoreN_1, state, grille, grilleN_1, premierCoupFait, undoDejaFait);
         update(NON_MOUVEMENT);
     }
 
