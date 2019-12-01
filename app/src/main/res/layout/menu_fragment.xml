@@ -7,20 +7,56 @@
     tools:context="fr.univ_orleans.a2048.fragments.MenuFragment"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@color/bkColor">
+    android:background="@color/bkColor"
+    android:padding="0.2in">
 
-    <FrameLayout
-        android:id="@+id/container"
+    <fr.univ_orleans.a2048.layouts.SquareLayout
+        android:id="@+id/grille"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="5"
+        android:background="@drawable/border_square_layout"
+        android:gravity="center"
+        android:orientation="vertical" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:layout_margin="0.25in"
-        tools:ignore="InOrMmUsage" />
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/button_less"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:text="-"
+            android:textColor="@color/bkSquareLayoutColor"
+            android:textSize="36sp" />
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:textSize="36sp"/>
+
+        <Button
+            android:id="@+id/button_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:text="+"
+            android:textColor="@color/bkSquareLayoutColor"
+            android:textSize="36sp" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/fragment_menu_bouton_jouer"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="0.25in"
         android:layout_marginBottom="0.25in"
@@ -28,16 +64,16 @@
         android:padding="10dp"
         android:text="@string/play"
         android:textColor="#FFF"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
     <Button
         android:id="@+id/fragment_menu_bouton_meilleur_score"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/border_button_menu_best_score"
         android:padding="10dp"
         android:text="@string/best_score"
         android:textColor="#FFF"
-        android:textSize="30sp" />
+        android:textSize="24sp" />
 
 </LinearLayout>
