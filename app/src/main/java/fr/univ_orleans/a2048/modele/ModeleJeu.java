@@ -320,30 +320,33 @@ public class ModeleJeu {
         }
         return false;
     }
+
+
     private boolean verifGameOver(){
         for (int i = 0; i < tailleGrille; i++) {
             for (int j = 0; j < tailleGrille; j++) {
+                int valcourante = grille[i][j].getValeur();
                 if (!((i == 0 && j == 0) || (i == 0 && j == tailleGrille - 1) ||
                         (i == tailleGrille - 1 && j == 0) || (i == tailleGrille - 1 && j == tailleGrille - 1))) {
                     if (i == 0) {
-                        if (grille[i + 1][j] == grille[i][j] || grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+                        if (grille[i + 1][j].getValeur() == valcourante || grille[i][j - 1].getValeur() == valcourante || grille[i][j + 1].getValeur() == valcourante)
                             return false;
                     }
                     else if (i == tailleGrille - 1) {
-                        if (grille[i - 1][j] == grille[i][j] || grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+                        if (grille[i - 1][j].getValeur() == valcourante || grille[i][j - 1].getValeur() == valcourante || grille[i][j + 1].getValeur() == valcourante)
                             return false;
                     }
                     else if (j == 0) {
-                        if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+                        if (grille[i - 1][j].getValeur() == valcourante || grille[i + 1][j].getValeur() == valcourante || grille[i][j + 1].getValeur() == valcourante)
                             return false;
                     }
                     else if (j == tailleGrille - 1) {
-                        if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] || grille[i][j - 1] == grille[i][j])
+                        if (grille[i - 1][j].getValeur() == valcourante || grille[i + 1][j].getValeur() == valcourante || grille[i][j - 1].getValeur()== valcourante)
                             return false;
                     }
                     else {
-                        if (grille[i - 1][j] == grille[i][j] || grille[i + 1][j] == grille[i][j] ||
-                                grille[i][j - 1] == grille[i][j] || grille[i][j + 1] == grille[i][j])
+                        if (grille[i - 1][j].getValeur() == valcourante || grille[i + 1][j].getValeur() == valcourante ||
+                                grille[i][j - 1].getValeur() == valcourante || grille[i][j + 1].getValeur() == valcourante)
                             return false;
                     }
                 }
