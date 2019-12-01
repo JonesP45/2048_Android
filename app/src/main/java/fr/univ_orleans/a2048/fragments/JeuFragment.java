@@ -27,6 +27,7 @@ import java.util.Random;
 import fr.univ_orleans.a2048.layouts.SquareButton;
 import fr.univ_orleans.a2048.layouts.SquareLayout;
 import fr.univ_orleans.a2048.modele.ModeleJeu;
+import fr.univ_orleans.a2048.modele.Cellule;
 import fr.univ_orleans.a2048.R;
 
 import static android.content.Context.MODE_PRIVATE;
@@ -135,7 +136,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         mButtonBestScore.setText(prefsModel.getString(PREF_KEY_BEST_SCORE, DEF_VALUE_BEST_SCORE));
         int score = Integer.parseInt(prefsModel.getString(PREF_KEY_SCORE, DEF_VALUE_SCORE));
         ModeleJeu.State state = ModeleJeu.State.valueOf(prefsModel.getString(PREF_KEY_STATE, DEF_VALUE_STATE));
-        int[][] grille = stringToModel(prefsModel.getString(PREF_KEY_MODEL, DEF_VALUE_MODEL));
+        Cellule[][] grille = stringToModel(prefsModel.getString(PREF_KEY_MODEL, DEF_VALUE_MODEL));
         mModele.load(score, state, grille);
         update(NON_MOUVEMENT);
     }
@@ -209,7 +210,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         for (int i = 0; i < mModele.getTailleGrille(); i++) {
             for (int j = 0; j < mModele.getTailleGrille(); j++) {
                 mGridButtons[i][j].setText("");
-                int cellule = mModele.getGrille()[i][j];
+                int cellule = mModele.getGrille()[i][j].getValeur();
                 if (cellule > 0) {
                     mGridButtons[i][j].setText(String.valueOf(cellule));
                 }
@@ -221,13 +222,9 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         Animation zoom = AnimationUtils.loadAnimation(this.getContext(),R.anim.zoom);
         for(int i = 0; i< mModele.getTailleGrille(); i++){
             for(int j= 0; j<mModele.getTailleGrille();j++){
-                Button bout = mGridButtons[i][j];
-                String valBoutS = bout.getText().toString();
-                int valBout = valBoutS.equals("")?0:Integer.parseInt(valBoutS);
-                System.out.println(valBout);
-                int valCell = mModele.getGrille()[i][j];
-                if((valBout * 2) == valCell && valBout!=0){
-                    bout.startAnimation(zoom);
+                if(mModele.getGrille()[i][j].isModifie()){
+                    mGridButtons[i][j].startAnimation(zoom);
+                    mModele.getGrille()[i][j].resetModifie();
                 }
             }
         }
@@ -268,19 +265,19 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private String modelToString(int[][] model) {
+    private String modelToString(Cellule[][] model) {
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < model.length; i++) {
             for (int j = 0; j < model[0].length; j++) {
-                str.append(model[i][j]);
+                str.append(model[i][j].getValeur());
                 str.append("-");
             }
         }
         return str.toString();
     }
-    private int[][] stringToModel(String model) {
+    private Cellule[][] stringToModel(String model) {
 //        Log.e(getClass().getSimpleName(), model);
-        int[][] grille = new int[taille][taille];
+        Cellule[][] grille = new Cellule[taille][taille];
         int i = 0, j = 0;
         StringBuilder str = new StringBuilder();
         for (int c = 0; c < model.length(); c++) {
@@ -290,7 +287,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
                 str.append(model.charAt(c));
             } else {
 //                Log.e(getClass().getSimpleName(), "else");
-                grille[i][j] = Integer.parseInt(str.toString());
+                grille[i][j] = new Cellule(Integer.parseInt(str.toString()));
                 str = new StringBuilder();
                 j++;
                 if (j % taille == 0) {

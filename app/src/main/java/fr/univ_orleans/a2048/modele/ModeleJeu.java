@@ -15,8 +15,8 @@ public class ModeleJeu {
     }
 
     private State state;
-    private int[][] grille;
-    private int[][] grilleN_1;
+    private Cellule[][] grille;
+    private Cellule[][] grilleN_1;
     private int tailleGrille;
     private int score;
     private int scoreN_1;
@@ -30,8 +30,8 @@ public class ModeleJeu {
     }
     private ModeleJeu(int taille) {
         tailleGrille = taille;
-        grille = new int[tailleGrille][tailleGrille];
-        grilleN_1 = new int[tailleGrille][tailleGrille];
+        grille = new Cellule[tailleGrille][tailleGrille];
+        grilleN_1 = new Cellule[tailleGrille][tailleGrille];
         listeCaseVide = new ArrayList<>();
         initialisation();
     }
@@ -42,8 +42,9 @@ public class ModeleJeu {
         listeCaseVide.clear();
         for (int i = 0; i < tailleGrille; i++) {
             for (int j = 0; j < tailleGrille; j++) {
-                grille[i][j] = 0;
-                grilleN_1[i][j] = 0;
+                grille[i][j]=new Cellule();
+                grilleN_1[i][j] = new Cellule();
+
                 listeCaseVide.add(new Pair<>(i, j));
             }
         }
@@ -51,7 +52,7 @@ public class ModeleJeu {
         generationAleatoire(2);
     }
 
-    public void load(int score, State state, int[][] grille) {
+    public void load(int score, State state, Cellule[][] grille) {
         this.score = score;
         this.state = state;
         this.grille = grille;
@@ -61,11 +62,13 @@ public class ModeleJeu {
     public void move(Mouvement movement) {
         if (state == State.LOSE) return;
         if (!premierCoupFait) premierCoupFait = true;
+        Cellule[][] temp = new Cellule[tailleGrille][tailleGrille];
         for (int i = 0; i < tailleGrille; i++) {
             for (int j = 0; j < tailleGrille; j++) {
-                grilleN_1[i][j] = grille[i][j];
+                temp[i][j] = new Cellule(grille[i][j].getValeur());
             }
         }
+
         boolean changementDansGrille = false;
 
         if (movement == Mouvement.DROITE)
@@ -80,6 +83,8 @@ public class ModeleJeu {
         if (changementDansGrille) {
             generationAleatoire(0);
             undoDejaFait = false;
+            grilleN_1 = temp;
+
         }
     }
     private boolean moveDroite() {
@@ -88,33 +93,33 @@ public class ModeleJeu {
             int valeurIitiale = -1, valeurCourante = -1;
             int indice = tailleGrille - 1;
             for (int j = tailleGrille - 1; j >= 0; j--) {
-                int cellule = grille[i][j];
-                if (cellule > 0) {
-                    if (valeurCourante == cellule) {
-                        valeurCourante += cellule;
+                Cellule cellule = grille[i][j];
+                if (cellule.getValeur() > 0) {
+                    if (valeurCourante == cellule.getValeur()) {
+                        valeurCourante += cellule.getValeur();
                         modifScore(valeurCourante);
                         ajouterCaseVide(i, j);
-                        grille[i][indice] = valeurCourante;
+                        grille[i][indice].setValeur(valeurCourante);
                         valeurCourante = valeurIitiale;
                         indice--;
                         if (!movement) movement = true;
                     } //bon
                     else if (valeurCourante == -1) { //valeurCourante != cellule
-                        valeurCourante = cellule;
+                        valeurCourante = cellule.getValeur();
                         if (indice != j) {
                             supprimerCaseVide(i, indice);
                             ajouterCaseVide(i, j);
-                            grille[i][indice] = valeurCourante;
+                            grille[i][indice] = new Cellule(valeurCourante);
                             if (!movement) movement = true;
                         }
                     }
                     else { //valeurCourante != cellule && valeurCourante != -1
                         indice--;
-                        valeurCourante = cellule;
+                        valeurCourante = cellule.getValeur();
                         if (indice != j) {
                             ajouterCaseVide(i, j);
                             supprimerCaseVide(i, indice);
-                            grille[i][indice] = valeurCourante;
+                            grille[i][indice] = new Cellule(valeurCourante);
                             if (!movement) movement = true;
                         }
                     }
@@ -129,33 +134,33 @@ public class ModeleJeu {
             int valeurIitiale = -1, valeurCourante = -1;
             int indice = 0;
             for (int j = 0; j < tailleGrille; j++) {
-                int cellule = grille[i][j];
-                if (cellule > 0) {
-                    if (valeurCourante == cellule) {
-                        valeurCourante += cellule;
+                Cellule cellule = grille[i][j];
+                if (cellule.getValeur() > 0) {
+                    if (valeurCourante == cellule.getValeur()) {
+                        valeurCourante += cellule.getValeur();
                         modifScore(valeurCourante);
                         ajouterCaseVide(i, j);
-                        grille[i][indice] = valeurCourante;
+                        grille[i][indice].setValeur(valeurCourante);
                         valeurCourante = valeurIitiale;
                         indice++;
                         if (!movement) movement = true;
                     } //bon
                     else if (valeurCourante == -1) { //valeurCourante != cellule
-                        valeurCourante = cellule;
+                        valeurCourante = cellule.getValeur();
                         if (indice != j) {
                             supprimerCaseVide(i, indice);
                             ajouterCaseVide(i, j);
-                            grille[i][indice] = valeurCourante;
+                            grille[i][indice] = new Cellule(valeurCourante);
                             if (!movement) movement = true;
                         }
                     }
                     else { //valeurCourante != cellule && valeurCourante != -1
                         indice++;
-                        valeurCourante = cellule;
+                        valeurCourante = cellule.getValeur();
                         if (indice != j) {
                             ajouterCaseVide(i, j);
                             supprimerCaseVide(i, indice);
-                            grille[i][indice] = valeurCourante;
+                            grille[i][indice] = new Cellule(valeurCourante);
                             if (!movement) movement = true;
                         }
                     }
@@ -170,33 +175,33 @@ public class ModeleJeu {
             int valeurIitiale = -1, valeurCourante = -1;
             int indice = 0;
             for (int i = 0; i < tailleGrille; i++) {
-                int cellule = grille[i][j];
-                if (cellule > 0) {
-                    if (valeurCourante == cellule) {
-                        valeurCourante += cellule;
+                Cellule cellule = grille[i][j];
+                if (cellule.getValeur() > 0) {
+                    if (valeurCourante == cellule.getValeur()) {
+                        valeurCourante += cellule.getValeur();
                         modifScore(valeurCourante);
                         ajouterCaseVide(i, j);
-                        grille[indice][j] = valeurCourante;
+                        grille[indice][j].setValeur(valeurCourante);
                         valeurCourante = valeurIitiale;
                         indice++;
                         if (!movement) movement = true;
                     } //bon
                     else if (valeurCourante == -1) { //valeurCourante != cellule
-                        valeurCourante = cellule;
+                        valeurCourante = cellule.getValeur();
                         if (indice != i) {
                             supprimerCaseVide(indice, j);
                             ajouterCaseVide(i, j);
-                            grille[indice][j] = valeurCourante;
+                            grille[indice][j] = new Cellule(valeurCourante);
                             if (!movement) movement = true;
                         }
                     }
                     else { //valeurCourante != cellule && valeurCourante != -1
                         indice++;
-                        valeurCourante = cellule;
+                        valeurCourante = cellule.getValeur();
                         if (indice != i) {
                             ajouterCaseVide(i, j);
                             supprimerCaseVide(indice, j);
-                            grille[indice][j] = valeurCourante;
+                            grille[indice][j] = new Cellule(valeurCourante);
                             if (!movement) movement = true;
                         }
                     }
@@ -211,33 +216,33 @@ public class ModeleJeu {
             int valeurIitiale = -1, valeurCourante = -1;
             int indice = tailleGrille - 1;
             for (int i = tailleGrille - 1; i >= 0; i--) {
-                int cellule = grille[i][j];
-                if (cellule > 0) {
-                    if (valeurCourante == cellule) {
-                        valeurCourante += cellule;
+                Cellule cellule = grille[i][j];
+                if (cellule.getValeur() > 0) {
+                    if (valeurCourante == cellule.getValeur()) {
+                        valeurCourante += cellule.getValeur();
                         modifScore(valeurCourante);
                         ajouterCaseVide(i, j);
-                        grille[indice][j] = valeurCourante;
+                        grille[indice][j].setValeur(valeurCourante);
                         valeurCourante = valeurIitiale;
                         indice--;
                         if (!movement) movement = true;
                     } //bon
                     else if (valeurCourante == -1) { //valeurCourante != cellule
-                        valeurCourante = cellule;
+                        valeurCourante = cellule.getValeur();
                         if (indice != i) {
                             supprimerCaseVide(indice, j);
                             ajouterCaseVide(i, j);
-                            grille[indice][j] = valeurCourante;
+                            grille[indice][j] = new Cellule(valeurCourante);
                             if (!movement) movement = true;
                         }
                     }
                     else { //valeurCourante != cellule && valeurCourante != -1
                         indice--;
-                        valeurCourante = cellule;
+                        valeurCourante = cellule.getValeur();
                         if (indice != i) {
                             ajouterCaseVide(i, j);
                             supprimerCaseVide(indice, j);
-                            grille[indice][j] = valeurCourante;
+                            grille[indice][j] = new Cellule(valeurCourante);
                             if (!movement) movement = true;
                         }
                     }
@@ -261,7 +266,7 @@ public class ModeleJeu {
             state = State.IN_GAME;
             for (int i = 0; i < tailleGrille; i++) {
                 for (int j = 0; j < tailleGrille; j++) {
-                    if (grille[i][j] >= 2048) {
+                    if (grille[i][j].getValeur() >= 2048) {
                         state = State.ALREADY_WIN;
                     }
                 }
@@ -282,7 +287,7 @@ public class ModeleJeu {
         else if (state == State.IN_GAME) {
             for (int i = 0; i < tailleGrille; i++) {
                 for (int j = 0; j < tailleGrille; j++) {
-                    if (grille[i][j] == 2048) {
+                    if (grille[i][j].getValeur() == 2048) {
                         state = State.WIN;
                         return true;
                     }
@@ -344,12 +349,12 @@ public class ModeleJeu {
         }
         int indiceListe = (int) (Math.random() * listeCaseVide.size());
         Pair<Integer, Integer> coordonneeCase = listeCaseVide.get(indiceListe);
-        grille[coordonneeCase.first][coordonneeCase.second] = nb;
+        grille[coordonneeCase.first][coordonneeCase.second]= new Cellule(nb);
         listeCaseVide.remove(indiceListe);
     }
 
     private void ajouterCaseVide(int x, int y) {
-        grille[x][y] = 0;
+        grille[x][y] = new Cellule();
         listeCaseVide.add(new Pair<>(x, y));
     }
     private void supprimerCaseVide(int x, int y) {
@@ -362,7 +367,7 @@ public class ModeleJeu {
     public int getTailleGrille() {
         return tailleGrille;
     }
-    public int[][] getGrille() {
+    public Cellule[][] getGrille() {
         return grille;
     }
     public State getState() {
