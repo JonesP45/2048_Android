@@ -34,9 +34,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="0.05in"
-        android:orientation="horizontal"
-        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -49,39 +47,243 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_score"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="3x3"
-                android:textAlignment="textStart"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
+            android:layout_weight="2"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="UselessLeaf"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0.05in"
+                android:orientation="horizontal"
+                android:background="@drawable/border_score"
+                tools:ignore="DisableBaselineAlignment,InOrMmUsage">
 
-            <TextView
-                android:id="@+id/troisXtrois"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="3x3"
+                    android:textAlignment="textStart"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,NestedWeights" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:ignore="UselessLeaf"/>
+
+                <TextView
+                    android:id="@+id/troisXtrois"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0.05in"
+                android:orientation="horizontal"
+                android:background="@drawable/border_score"
+                tools:ignore="DisableBaselineAlignment,InOrMmUsage">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="4x4"
+                    android:textAlignment="textStart"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,NestedWeights" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:ignore="UselessLeaf" />
+
+                <TextView
+                    android:id="@+id/quatreXquatre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0.05in"
+                android:orientation="horizontal"
+                android:background="@drawable/border_score"
+                tools:ignore="DisableBaselineAlignment,InOrMmUsage">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="5x5"
+                    android:textAlignment="textStart"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,NestedWeights" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:ignore="UselessLeaf" />
+
+                <TextView
+                    android:id="@+id/cinqXcinq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0.05in"
+                android:orientation="horizontal"
+                android:background="@drawable/border_score"
+                tools:ignore="DisableBaselineAlignment,InOrMmUsage">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="6x6"
+                    android:textAlignment="textStart"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,NestedWeights" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:ignore="UselessLeaf" />
+
+                <TextView
+                    android:id="@+id/sixXsix"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0.05in"
+                android:orientation="horizontal"
+                android:background="@drawable/border_score"
+                tools:ignore="DisableBaselineAlignment,InOrMmUsage">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="7x7"
+                    android:textAlignment="textStart"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,NestedWeights" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:ignore="UselessLeaf" />
+
+                <TextView
+                    android:id="@+id/septXsept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="0.05in"
+                android:orientation="horizontal"
+                android:background="@drawable/border_score"
+                tools:ignore="DisableBaselineAlignment,InOrMmUsage">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="8x8"
+                    android:textAlignment="textStart"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText,NestedWeights" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    tools:ignore="UselessLeaf" />
+
+                <TextView
+                    android:id="@+id/huitXhuit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="0"
+                    android:textAlignment="textEnd"
+                    android:textColor="#FFF"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -91,244 +293,16 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="0.05in"
-        android:orientation="horizontal"
-        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessLeaf" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_score"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="4x4"
-                android:textAlignment="textStart"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="UselessLeaf" />
-
-            <TextView
-                android:id="@+id/quatreXquatre"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessLeaf" />
-
-    </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="0.05in"
-        android:orientation="horizontal"
-        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessLeaf">
 
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_score"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="5x5"
-                android:textAlignment="textStart"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="UselessLeaf" />
 
-            <TextView
-                android:id="@+id/cinqXcinq"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessLeaf" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="0.05in"
-        android:orientation="horizontal"
-        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessLeaf">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_score"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="6x6"
-                android:textAlignment="textStart"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="UselessLeaf" />
-
-            <TextView
-                android:id="@+id/sixXsix"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessLeaf" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="0.05in"
-        android:orientation="horizontal"
-        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessLeaf">
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_score"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="7x7"
-                android:textAlignment="textStart"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="UselessLeaf" />
-
-            <TextView
-                android:id="@+id/septXsept"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            tools:ignore="UselessLeaf" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -345,42 +319,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/border_score"
-            android:orientation="horizontal">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="8x8"
-                android:textAlignment="textStart"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText,NestedWeights" />
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                tools:ignore="UselessLeaf" />
-
-            <TextView
-                android:id="@+id/huitXhuit"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:text="0"
-                android:textAlignment="textEnd"
-                android:textColor="#FFF"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
