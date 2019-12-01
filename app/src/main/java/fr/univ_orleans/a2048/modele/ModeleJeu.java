@@ -1,6 +1,5 @@
 package fr.univ_orleans.a2048.modele;
 
-import android.util.Log;
 import android.util.Pair;
 
 import java.util.ArrayList;
@@ -24,18 +23,6 @@ public class ModeleJeu {
     private ArrayList<Pair<Integer, Integer>> listeCaseVide;
     private boolean premierCoupFait = false;
     private boolean undoDejaFait = false;
-
-    private void afficheGrille() {
-        String str = "";
-        for (int i = 0; i < tailleGrille; i++) {
-            for (int j = 0; j < tailleGrille; j++) {
-                str += grille[i][j] + "  ";
-            }
-            str += "/n";
-        }
-        str += "/n";
-        Log.e(getClass().getSimpleName(), str);
-    }
 
     public static ModeleJeu newInstance(int taille) {
         return new ModeleJeu(taille);
@@ -271,9 +258,7 @@ public class ModeleJeu {
             undoDejaFait = true;
             score = scoreN_1;
             for (int i = 0; i < tailleGrille; i++) {
-                for (int j = 0; j < tailleGrille; j++) {
-                    grille[i][j] = grilleN_1[i][j];
-                }
+                System.arraycopy(grilleN_1[i], 0, grille[i], 0, tailleGrille);
             }
         }
         if (state == State.LOSE) {

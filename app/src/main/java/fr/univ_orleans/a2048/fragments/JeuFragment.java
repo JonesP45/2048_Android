@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +23,6 @@ import androidx.fragment.app.Fragment;
 import java.util.Objects;
 import java.util.Random;
 
-import fr.univ_orleans.a2048.layouts.SquareButton;
 import fr.univ_orleans.a2048.layouts.SquareLayout;
 import fr.univ_orleans.a2048.modele.ModeleJeu;
 import fr.univ_orleans.a2048.modele.Cellule;
@@ -75,7 +73,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
 
         mModele = ModeleJeu.newInstance(taille);
         DEF_VALUE_MODEL = modelToString(mModele.getGrille());
-//        Log.e(getClass().getSimpleName(), DEF_VALUE_MODEL);
 
         mSquareLayout = view.findViewById(R.id.grille);
         Button mButtonUndo = view.findViewById(R.id.button_undo);
@@ -144,7 +141,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
     public void move(ModeleJeu.Mouvement mouvement) {
         mModele.move(mouvement);
         update(MOUVEMENT);
-//        Log.e(getClass().getSimpleName(), mModele.getState().toString());
         if (gameWin() && mModele.getState() == ModeleJeu.State.WIN) {
             AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
             builder.setTitle("You won!")
@@ -200,7 +196,7 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
     }
 
     private void update(boolean action) {
-        if(action)
+        if (action)
             animation();
         updateTextButtons();
         updateScoreButton();
@@ -219,10 +215,10 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
     }
     private void animation(){
-        Animation zoom = AnimationUtils.loadAnimation(this.getContext(),R.anim.zoom);
-        for(int i = 0; i< mModele.getTailleGrille(); i++){
-            for(int j= 0; j<mModele.getTailleGrille();j++){
-                if(mModele.getGrille()[i][j].isModifie()){
+        Animation zoom = AnimationUtils.loadAnimation(this.getContext(), R.anim.zoom);
+        for (int i = 0; i < mModele.getTailleGrille(); i++) {
+            for (int j= 0; j < mModele.getTailleGrille(); j++) {
+                if (mModele.getGrille()[i][j].isModifie()){
                     mGridButtons[i][j].startAnimation(zoom);
                     mModele.getGrille()[i][j].resetModifie();
                 }
@@ -267,26 +263,22 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
 
     private String modelToString(Cellule[][] model) {
         StringBuilder str = new StringBuilder();
-        for (int i = 0; i < model.length; i++) {
+        for (Cellule[] cellules : model) {
             for (int j = 0; j < model[0].length; j++) {
-                str.append(model[i][j].getValeur());
+                str.append(cellules[j].getValeur());
                 str.append("-");
             }
         }
         return str.toString();
     }
     private Cellule[][] stringToModel(String model) {
-//        Log.e(getClass().getSimpleName(), model);
         Cellule[][] grille = new Cellule[taille][taille];
         int i = 0, j = 0;
         StringBuilder str = new StringBuilder();
         for (int c = 0; c < model.length(); c++) {
-//            Log.e(getClass().getSimpleName(), "str = " + str.toString() + ", c = " + model.charAt(c) + ", i = " + i + ", j = " + j);
             if (model.charAt(c) != '-') {
-//                Log.e(getClass().getSimpleName(), "if");
                 str.append(model.charAt(c));
             } else {
-//                Log.e(getClass().getSimpleName(), "else");
                 grille[i][j] = new Cellule(Integer.parseInt(str.toString()));
                 str = new StringBuilder();
                 j++;
@@ -298,7 +290,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
         return grille;
     }
-
 
     private void setGrille() {
         mSquareLayout.removeAllViews();
@@ -331,7 +322,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
             mSquareLayout.addView(linearLayout);
         }
     }
-
     private String setTextButton() {
         String str = "";
         Random random = new Random();
@@ -343,7 +333,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
         return str;
     }
-
     private void setTextSizeButton(Button button) {
         int size;
         switch (taille) {
@@ -370,7 +359,6 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
         button.setTextSize(TypedValue.COMPLEX_UNIT_SP, size);
     }
-
     private void setBackgroundButton(Button button) {
         Drawable drawable;
         switch (button.getText().toString()) {
@@ -412,6 +400,5 @@ public class JeuFragment extends Fragment implements View.OnClickListener {
         }
         button.setBackground(drawable);
     }
-
 
 }

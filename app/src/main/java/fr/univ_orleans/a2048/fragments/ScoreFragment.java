@@ -19,13 +19,6 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ScoreFragment extends Fragment {
 
-    private TextView trois;
-    private TextView quatre;
-    private TextView cinq;
-    private TextView six;
-    private TextView sept;
-    private TextView huit;
-
     public static ScoreFragment newInstance() {
         return new ScoreFragment();
     }
@@ -36,42 +29,37 @@ public class ScoreFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         final View view= inflater.inflate(R.layout.score_fragment, container, false);
         SharedPreferences prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("ModelGrille4SharedPrefs", MODE_PRIVATE);
-        quatre = view.findViewById(R.id.quatreXquatre);
+        TextView quatre = view.findViewById(R.id.quatreXquatre);
         String score = prefs.getString("best_score","0");
         quatre.setText(score);
 
 
         prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("ModelGrille5SharedPrefs", MODE_PRIVATE);
-        cinq = view.findViewById(R.id.cinqXcinq);
+        TextView cinq = view.findViewById(R.id.cinqXcinq);
         score = prefs.getString("best_score","0");
         cinq.setText(score);
 
         prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("ModelGrille6SharedPrefs", MODE_PRIVATE);
-        six = view.findViewById(R.id.sixXsix);
+        TextView six = view.findViewById(R.id.sixXsix);
         score = prefs.getString("best_score","0");
         six.setText(score);
 
         prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("ModelGrille7SharedPrefs", MODE_PRIVATE);
-        sept = view.findViewById(R.id.septXsept);
+        TextView sept = view.findViewById(R.id.septXsept);
         score = prefs.getString("best_score","0");
         sept.setText(score);
 
         prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("ModelGrille8SharedPrefs", MODE_PRIVATE);
-        huit = view.findViewById(R.id.huitXhuit);
+        TextView huit = view.findViewById(R.id.huitXhuit);
         score = prefs.getString("best_score","0");
         huit.setText(score);
 
-
         prefs = Objects.requireNonNull(getActivity()).getSharedPreferences("ModelGrille3SharedPrefs", MODE_PRIVATE);
-        trois = view.findViewById(R.id.troisXtrois);
+        TextView trois = view.findViewById(R.id.troisXtrois);
         score = prefs.getString("best_score","0");
         trois.setText(score);
 
-
-
         return view;
     }
-
-
 
 }

@@ -72,7 +72,7 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onAttach(Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         // 4 - Call the method that creating callback after being attached to parent activity
         this.createCallbackToParentActivity();
@@ -232,21 +232,21 @@ public class MenuFragment extends Fragment implements View.OnClickListener {
             case "64":
                 drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_64);
                 break;
-            case "128":
-                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_128);
-                break;
-            case "256":
-                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_256);
-                break;
-            case "512":
-                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_512);
-                break;
-            case "1024":
-                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_1024);
-                break;
-            case "2048":
-                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_2048);
-                break;
+//            case "128":
+//                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_128);
+//                break;
+//            case "256":
+//                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_256);
+//                break;
+//            case "512":
+//                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_512);
+//                break;
+//            case "1024":
+//                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_1024);
+//                break;
+//            case "2048":
+//                drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_2048);
+//                break;
             default:
                 drawable = ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.border_square_button_0);
         }

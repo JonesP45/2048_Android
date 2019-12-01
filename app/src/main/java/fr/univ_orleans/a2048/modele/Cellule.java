@@ -5,14 +5,14 @@ public class Cellule {
     private int valeur;
     private boolean modifie;
 
-    public Cellule(){
-        valeur=0;
-        modifie=false;
+    public Cellule() {
+        valeur = 0;
+        modifie = false;
     }
 
-    public Cellule(int val){
-        valeur=val;
-        modifie=false;
+    public Cellule(int val) {
+        valeur = val;
+        modifie = false;
     }
 
     public Cellule setValeur(int valeur) {

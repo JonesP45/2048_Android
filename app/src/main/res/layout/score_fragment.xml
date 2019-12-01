@@ -6,7 +6,8 @@
     tools:context="fr.univ_orleans.a2048.fragments.ScoreFragment"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@color/bkColor">
+    android:background="@color/bkColor"
+    tools:ignore="UselessLeaf|InOrMmUsage|DisableBaselineAlignment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -16,7 +17,8 @@
         android:layout_marginBottom="0.2in"
         android:background="@drawable/border_button_title"
         android:gravity="center"
-        android:textAlignment="center">
+        android:textAlignment="center"
+        tools:ignore="InOrMmUsage">
 
         <TextView
             android:layout_width="wrap_content"
@@ -33,12 +35,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0.05in"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf">
 
         </LinearLayout>
 
@@ -57,12 +61,14 @@
                 android:textAlignment="textStart"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,NestedWeights" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
+                android:layout_weight="1"
+                tools:ignore="UselessLeaf"/>
 
             <TextView
                 android:id="@+id/troisXtrois"
@@ -73,13 +79,15 @@
                 android:textAlignment="textEnd"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf" />
 
     </LinearLayout>
 
@@ -87,14 +95,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0.05in"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-
-        </LinearLayout>
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -111,12 +119,14 @@
                 android:textAlignment="textStart"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,NestedWeights" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
+                android:layout_weight="1"
+                tools:ignore="UselessLeaf" />
 
             <TextView
                 android:id="@+id/quatreXquatre"
@@ -127,13 +137,15 @@
                 android:textAlignment="textEnd"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf" />
 
     </LinearLayout>
 
@@ -142,12 +154,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0.05in"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf">
 
         </LinearLayout>
 
@@ -166,12 +180,14 @@
                 android:textAlignment="textStart"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,NestedWeights" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
+                android:layout_weight="1"
+                tools:ignore="UselessLeaf" />
 
             <TextView
                 android:id="@+id/cinqXcinq"
@@ -182,13 +198,15 @@
                 android:textAlignment="textEnd"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf" />
 
     </LinearLayout>
 
@@ -196,12 +214,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0.05in"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf">
 
         </LinearLayout>
 
@@ -220,12 +240,14 @@
                 android:textAlignment="textStart"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,NestedWeights" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
+                android:layout_weight="1"
+                tools:ignore="UselessLeaf" />
 
             <TextView
                 android:id="@+id/sixXsix"
@@ -236,13 +258,15 @@
                 android:textAlignment="textEnd"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf" />
 
     </LinearLayout>
 
@@ -250,12 +274,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0.05in"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf">
 
         </LinearLayout>
 
@@ -274,12 +300,14 @@
                 android:textAlignment="textStart"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,NestedWeights" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
+                android:layout_weight="1"
+                tools:ignore="UselessLeaf" />
 
             <TextView
                 android:id="@+id/septXsept"
@@ -290,13 +318,15 @@
                 android:textAlignment="textEnd"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf" />
 
     </LinearLayout>
 
@@ -304,12 +334,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="0.05in"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        tools:ignore="DisableBaselineAlignment,InOrMmUsage">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf">
 
         </LinearLayout>
 
@@ -328,12 +360,14 @@
                 android:textAlignment="textStart"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,NestedWeights" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1"></LinearLayout>
+                android:layout_weight="1"
+                tools:ignore="UselessLeaf" />
 
             <TextView
                 android:id="@+id/huitXhuit"
@@ -344,13 +378,15 @@
                 android:textAlignment="textEnd"
                 android:textColor="#FFF"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"></LinearLayout>
+            android:layout_weight="1"
+            tools:ignore="UselessLeaf" />
 
     </LinearLayout>
 
