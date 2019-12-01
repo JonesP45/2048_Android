@@ -15,7 +15,8 @@
     <string name="explication2">2048 tile!</string>
 
     <string name="play"> Commencer le jeu </string>
-<!--    <string name="new_game">Nouveau jeu</string>-->
     <string name="best_score"> Meilleurs scores </string>
+
+    <string name="score_title">Yours bests scores !!!</string>
 
 </resources>

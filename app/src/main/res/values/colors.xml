@@ -17,7 +17,8 @@
     <color name="btnColor1024">#FFFF1E</color>
     <color name="btnColor2048">#FFC107</color>
 
-    <color name="btnColorBestScore">#FF1E00</color>
+<!--    <color name="btnColorBestScore">#FF1E00</color>-->
+    <color name="btnColorBestScore">#FF1E1E</color>
 
     <color name="bkSquareLayoutColor">#535353</color>
     <color name="bkColor">#E6E6E6</color>

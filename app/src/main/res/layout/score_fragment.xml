@@ -11,21 +11,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_marginLeft="0.1in"
+        android:layout_marginRight="0.1in"
+        android:layout_marginBottom="0.2in"
+        android:background="@drawable/border_button_title"
+        android:gravity="center"
+        android:textAlignment="center">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Your best scores !!!"
-            android:textStyle="bold"
-            android:textColor="@color/bkSquareLayoutColor"
-            android:textSize="36sp" />
+            android:text="@string/score_title"
+            android:textAlignment="center"
+            android:textColor="#FFF"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="0.05in"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -39,47 +46,47 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_score"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="3x3"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
+                android:text="3x3"
                 android:textAlignment="textStart"
-                />
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </LinearLayout>
+                android:layout_weight="1"></LinearLayout>
 
             <TextView
                 android:id="@+id/troisXtrois"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textEnd"/>
+                android:text="0"
+                android:textAlignment="textEnd"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="0.05in"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -93,40 +100,40 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_score"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="4x4"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textStart"/>
+                android:text="4x4"
+                android:textAlignment="textStart"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </LinearLayout>
+                android:layout_weight="1"></LinearLayout>
 
             <TextView
                 android:id="@+id/quatreXquatre"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textEnd"/>
+                android:text="0"
+                android:textAlignment="textEnd"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
 
     </LinearLayout>
 
@@ -134,6 +141,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="0.05in"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -147,46 +155,47 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_score"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="5x5"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textStart"/>
+                android:text="5x5"
+                android:textAlignment="textStart"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </LinearLayout>
+                android:layout_weight="1"></LinearLayout>
 
             <TextView
                 android:id="@+id/cinqXcinq"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textEnd"/>
+                android:text="0"
+                android:textAlignment="textEnd"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="0.05in"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -200,46 +209,47 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_score"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="6x6"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textStart"/>
+                android:text="6x6"
+                android:textAlignment="textStart"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </LinearLayout>
+                android:layout_weight="1"></LinearLayout>
 
             <TextView
                 android:id="@+id/sixXsix"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textEnd"/>
+                android:text="0"
+                android:textAlignment="textEnd"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="0.05in"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -253,46 +263,47 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_score"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="7x7"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textStart"/>
+                android:text="7x7"
+                android:textAlignment="textStart"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </LinearLayout>
+                android:layout_weight="1"></LinearLayout>
 
             <TextView
                 android:id="@+id/septXsept"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textEnd"/>
+                android:text="0"
+                android:textAlignment="textEnd"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="0.05in"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -306,40 +317,40 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:background="@drawable/border_score"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="8x8"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textStart"/>
+                android:text="8x8"
+                android:textAlignment="textStart"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
-            </LinearLayout>
+                android:layout_weight="1"></LinearLayout>
 
             <TextView
                 android:id="@+id/huitXhuit"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="0"
-                android:textColor="@color/bkSquareLayoutColor"
-                android:textSize="30sp"
                 android:layout_weight="1"
-                android:textStyle="bold"
-                android:textAlignment="textEnd"/>
+                android:text="0"
+                android:textAlignment="textEnd"
+                android:textColor="#FFF"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-        </LinearLayout>
+            android:layout_weight="1"></LinearLayout>
 
     </LinearLayout>
 
