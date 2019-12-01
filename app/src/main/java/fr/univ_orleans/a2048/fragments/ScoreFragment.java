@@ -19,12 +19,12 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class ScoreFragment extends Fragment {
 
-    TextView trois;
-    TextView quatre;
-    TextView cinq;
-    TextView six;
-    TextView sept;
-    TextView huit;
+    private TextView trois;
+    private TextView quatre;
+    private TextView cinq;
+    private TextView six;
+    private TextView sept;
+    private TextView huit;
 
     public static ScoreFragment newInstance() {
         return new ScoreFragment();
